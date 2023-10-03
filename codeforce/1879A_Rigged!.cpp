@@ -27,7 +27,7 @@ int main(){
 				}
 			}
 
-			if(temp==1 && j=n-1){
+			if(temp==1 && j==n-1){
 				cout<<"-1"<<endl;
 			}else{
 				if(j==n-1){
