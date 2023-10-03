@@ -21,7 +21,7 @@ int main(){
 				E=e;
 			}
 
-			if(e>=E){
+			if(e>=E && j!=0){
 				if(s>=w){
 					temp=1;
 				}
