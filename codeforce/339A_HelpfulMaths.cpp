@@ -11,21 +11,29 @@ void takeIO(){
 
 int main(){
     takeIO();
+
     string s;
     cin>>s;
-    vector<int> v;
-    for(auto i=0;i<s.size();i++){
-    	if(s[i]!='+'){
-    		v[i]=(int)s[i];
-    	}
+    vector<int> arr;
+   
+    for(char c:s){
+        if(c>='0'&&c<='9'){
+            int a = static_cast<int>(c)-48;
+            arr.push_back(a);
+        }
     }
 
-    sort(v.begin(), v.end());
+    sort(arr.begin(), arr.end());
 
-    for(auto i=0;i<v.size();i++){
-    	cout<<v[i]<<"+";
+    for(int j=0;j<arr.size();j++){
+        if(j==arr.size()-1){
+            cout<<arr[j];
+        }else{
+            cout<<arr[j]<<"+";
+        }
     }
     cout<<endl;
+
 
     return 0;
 }
