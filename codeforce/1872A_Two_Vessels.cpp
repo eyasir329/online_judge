@@ -1,21 +1,36 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-//practice
+
 #define int long long int
-#define vi vector <int>
-#define pb push_back
-#define all(a) a.begin(),a.end()
-#define sz(a) ((int) a.size())
-#define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
-//practice
+
 void solve()
 {
-
+   int a,b,c;
+   cin>>a>>b>>c;
+   int t{0};
+   if(a>b || b>a){
+    if(a>b){
+        while(a>b){
+            a=a-c;
+            b=b+c;
+            t++;
+        }
+    }else{
+        while(a<b){
+            a=a+c;
+            b=b-c;
+            t++;
+        }
+    }
+   }
+    cout<<t<<endl;
+   
 }
-//practice
+
 int32_t main()
 {
+
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
@@ -25,15 +40,18 @@ int32_t main()
 
     int t = 1;
     cin >> t;
-
-    while (t--) solve();
+    while (t--)
+    {
+        solve();
+    }
 
     cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
+    cout << endl;
+
     return 0;
 }
 
 
 /*===============================================
   :::::::::::::Author :Eyasir Ahamed:::::::::::::
-  :::::::::::::::eyasir329.com:::::::::::::::::::
   ===============================================*/
