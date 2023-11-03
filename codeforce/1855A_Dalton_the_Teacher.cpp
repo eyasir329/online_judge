@@ -13,28 +13,31 @@ void solve()
 {
 	int n;
 	cin>>n;
-	vc d;
-	char c;
+	vi q;
+	int a;
 	for(int i=0;i<n;i++){
-		cin>>c;
-		d.pb(c);
-	}
-	int t;
-	if(n<2){
-		t=-1;
-	}else if(n==2){
-		if(d[0]=='L'&&d[1]=='L'||d[0]=='R'&&d[1]=='R'){
-			t=-1;
-		}else if(d[0]=='L'&&d[1]=='R'){
-			t=1;
-		}else if(d[0]=='R'&&d[1]=='L'){
-			t=0;
+		cin>>a;
+		if(a==(i+1)){
+			q.pb(a);
 		}
+	}
+	
+	int tt=0;
+	if(sz(q)==0){
+		tt=0;
+	}else if(sz(q)==1){
+		tt=1;
+	}else if(sz(q)==2 || sz(q)==3){
+		tt=sz(q)-1;
 	}else{
+		if(sz(q)%2==0){
+			tt=sz(q)/2;
+		}else{
+			tt=sz(q)/2+1;
+		}
 		
 	}
-
-	cout<<t<<endl;
+	cout<<tt<<endl;
 }
 
 int32_t main()
