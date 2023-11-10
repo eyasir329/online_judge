@@ -12,19 +12,53 @@ using namespace std;
 
 void solve()
 {
-	int n,m;
-	cin>>n>>m;
+	int n;
+	cin>>n;
+	vector<pair<string,string>>vss;
+	vector<string>vs;
+	string st;
+	for(int i=0;i<2*n-2;i++){
+		cin>>st;
+		vs.pb(st);
+	}
+	for(int i=0;i<sz(vs);i++){
+		int len = sz(vs[i]);
+		int k=i+1;
+		while(k<sz(vs)){
+			int len2 = sz(vs[k]);
+			if(len==len2){
+				vss.pb({vs[i],vs[k]});
+			}
+			k++;
+		}
+	}
 	int t=0;
-	if(n==1){
-		t=0;
-	}else if(n==2){
-		t=m;
+	for(auto c:vss){
+		string tt;
+		for(int i=sz(c.second)-1;i>=0;i--){
+			tt = c.second;
+		}
+		if(c.first!=tt){
+			//cout<<c.first<<" "<<tt<<endl;
+			for(int ii=0,kk=sz(tt)-1;ii<sz(tt);ii++,kk--){
+				if(tt[ii]!=c.first[kk]){
+					t=-1;
+					break;
+				}
+			}
+			if(t==-1){
+				break;
+			}
+			
+		}
+		//cout<<c.first<<" "<<c.second<<endl;
 	}
-	else{
-		t=n+m;
+	if(t==0){
+		cout<<"YES"<<endl;
+	}else{
+		cout<<"NO"<<endl;
 	}
-	cout<<t<<endl;
-}
+}	
 
 int32_t main()
 {

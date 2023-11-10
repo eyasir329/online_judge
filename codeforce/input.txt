@@ -1,17 +1,11 @@
-8
 5
-ABBAA
+4
+bcd cd a d abc ab
 3
-BBB
-7
-BBAAABA
-20
-AAAAAAAABBBAABBBBBAB
-1
-A
-13
-AAAABABBABBAB
-7
-BBBAAAA
-11
-AABBBAABABB
+i io i oi
+2
+g g
+3
+t al lt a
+4
+bba a ab a abb ba

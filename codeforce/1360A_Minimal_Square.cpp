@@ -12,18 +12,27 @@ using namespace std;
 
 void solve()
 {
-	int n,m;
-	cin>>n>>m;
-	int t=0;
-	if(n==1){
-		t=0;
-	}else if(n==2){
-		t=m;
-	}
-	else{
-		t=n+m;
-	}
-	cout<<t<<endl;
+ int a,b;
+ cin>>a>>b;
+ int t=0;
+ if(a==b){
+ 	t = pow(a+a,2);
+ }else if(a>b){
+ 	if(a<(b+b)){
+ 		t = pow(b+b,2);
+ 	}else{
+ 		t = pow(a,2);
+ 	}
+ 	
+ }else{
+ 	if(b<(a+a)){
+ 		t = pow(a+a,2);
+ 	}else{
+ 		t = pow(b,2);
+ 	}
+ 	
+ }
+ cout<<t<<endl;
 }
 
 int32_t main()

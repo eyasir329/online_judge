@@ -12,73 +12,18 @@ using namespace std;
 
 void solve()
 {
-	int n;
-	cin>>n;
-	string s;
-	cin>>s;
-	int a=0,b=0;
-	int aa=0,bb=0,t1=0,t2=0;
-	int i=0;
-	while(i<s.size()){
-		if(s.size()<2){
-			if(s[i]=='A'){
-				t1++;
-			}else{
-				t2++;
-			}
+	string test = "314159265358979323846264338327";
+	string in;
+	cin>>in;
+	int t=0;
+	for(int i=0;i<sz(in);i++){
+		if(in[i]==test[i]){
+			t++;
 		}else{
-			if(a<=3||b<=3){
-			if(s[i]=='A'){
-				a++;
-				aa++;
-			}else{
-				b++;
-				bb++;
-			}
-
-			if(b==3){
-				t2++;
-				a=0;
-				b=0;
-			}else{
-				if(a==3||i==s.size()-1){
-				// if(b>=3){
-				// 	if(b%3==0 && b>3){
-				// 		t2=t2+b/3;
-				// 	}else{
-				// 		t2++;
-				// 	}
-					
-				// }else{
-				// 	t1++;
-				// }
-				t1++;
-				a=0;
-				b=0;
-			}
-			}
-			
+			break;
 		}
-		}
-		
-		i++;
-		
 	}
-
-	if(t1>t2){
-		cout<<'A'<<endl;
-	}else{
-		if(t1==t2){
-			if(aa>bb){
-				cout<<'A'<<endl;
-			}else{
-				cout<<'B'<<endl;
-			}
-		}else{
-			cout<<'B'<<endl;
-		}
-		
-	}
+	cout<<t<<endl;
 }
 
 int32_t main()
