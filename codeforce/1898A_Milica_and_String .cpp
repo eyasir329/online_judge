@@ -12,32 +12,50 @@ using namespace std;
 
 void solve()
 {
-	int n,x;
-	cin>>n>>x;
-	vi arr;	
-	int k=0,a;
-	arr.pb(0);
-	for(int i=0;i<n;i++){
-		cin>>a;
-		arr.pb(a);
-	}
-	if(arr[sz(arr)-1]<x){
-		arr.pb(x);
-	}
-	int m = abs(arr[sz(arr)-1]-arr[sz(arr)-2])*2;
-	// print(arr);
-	for(int i=1;i<sz(arr);i++){
-		int d = abs(arr[i]-arr[i-1]);
-		if(d>k){
-			k=d;
+	int n,k;
+	cin>>n>>k;
+	vc c;
+	string s;
+	cin>>s;
+	int bcount=0;
+	for(int i=0;i<sz(s);i++){
+		if(s[i]=='B'){
+			bcount++;
 		}
 	}
-	if(m>k){
-		k=m;
+	int t=0,m=0,t1=0,t2=0;
+	char ch;
+	if(bcount==k){
+		cout<<t<<endl;
+		return;
+	}else if(bcount>k){
+		int c=0;
+		for(int i=0;i<sz(s);i++){
+			if(s[i]=='B'){
+				c++;
+				if(bcount-c==k){
+					cout<<"1"<<endl;
+					cout<<i+1<<" "<<'A'<<endl;
+					return;
+				}
+			}
+		}
+	}else{
+		int y=0;
+		for(int i=0;i<sz(s);i++){
+			if(s[i]=='A'){
+				y++;
+				if(y+bcount==k){
+					cout<<"1"<<endl;
+					cout<<i+1<<" "<<'B'<<endl;
+					return;
+				}
+			}
+		}
 	}
-	cout<<k<<endl;
-}
 
+
+}
 
 int32_t main()
 {
