@@ -12,32 +12,47 @@ using namespace std;
 
 void solve()
 {
-	int n;
-	cin>>n;
+	int n, m;
+	cin >> n >> m;
 	string s;
-	cin>>s;
-	stack<int>stk;
-	
-	for(int i=0;i<n;i++){
-		if(s[i]=='A'){
-			stk.push(i);
+	string t;
+	cin >> s >> t;
+	bool sb=true,tb=true;
+
+	for(int i=0;i<n-1;i++){
+		if(s[i]==s[i+1]){
+			sb=false;
 		}
 	}
 
-	int count=0;
-
-	while(!stk.empty()){
-		int a = stk.top();
-		if(a<n-1){
-			if(s[a+1]=='B'){
-				swap(s[a+1],s[a]);
-				count++;
-				stk.pop();
+	if(sb||sz(s)==1){
+		cout<<"Yes"<<endl;
+	}else{
+		for(int i=0;i<m-1;i++){
+		 if(t[i]==t[i+1]){
+			tb=false;
+		 }
+		}
+		if(tb==false){
+			cout<<"No"<<endl;
+		}else{
+			bool b=true;
+			for(int i=0;i<n-1;i++){
+				if(s[i]==s[i+1]){
+					if(t[0]==s[i] || t[m-1]==s[i]){
+						b=false;
+					}
+				}
+				
+			}
+			if(b){
+				cout<<"Yes"<<endl;
+			}else{
+				cout<<"No"<<endl;
 			}
 		}
-		
 	}
-	cout<<count<<endl;
+	
 }
 
 int32_t main()
