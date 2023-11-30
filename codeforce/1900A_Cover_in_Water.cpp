@@ -12,31 +12,28 @@ using namespace std;
 
 void solve()
 {
-    int n,k;
-    cin>>n>>k;
-    vi arr(n,0);
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    vi arr2 = arr;
-    sort(all(arr2));
-    bool flag = true;
-    for(int i=0;i<n;i++){
-        if(arr[i]!=arr2[i]){
-            flag=false;
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    bool flag = false;
+    for(int i=2;i<n;i++){
+        if(s[i]=='.'&&s[i-1]=='.'&&s[i-2]=='.'){
+            flag=true;
             break;
         }
     }
     if(flag){
-        cout<<"YES"<<endl;
+        cout<<"2"<<endl;
     }else{
-        
-            if(k>=2){
-                cout<<"YES"<<endl;
-            }else{
-                cout<<"NO"<<endl;
+        int k=0;
+        for(int i=0;i<n;i++){
+            if(s[i]=='.'){
+                k++;
             }
         }
+        cout<<k<<endl;
+    }
     
 }
 
