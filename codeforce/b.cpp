@@ -12,32 +12,7 @@ using namespace std;
 
 void solve()
 {
-	int n;
-	cin>>n;
-	string s;
-	cin>>s;
-	stack<int>stk;
-	
-	for(int i=0;i<n;i++){
-		if(s[i]=='A'){
-			stk.push(i);
-		}
-	}
 
-	int count=0;
-
-	while(!stk.empty()){
-		int a = stk.top();
-		if(a<n-1){
-			if(s[a+1]=='B'){
-				swap(s[a+1],s[a]);
-				count++;
-				stk.pop();
-			}
-		}
-		
-	}
-	cout<<count<<endl;
 }
 
 int32_t main()
