@@ -14,45 +14,17 @@ void solve()
 {
     string s;
     cin>>s;
-    int k = sz(s);
-    vc ch;
-    for(int i=0;i<sz(s);i++){
-        ch.pb(s[i]);
-        if(s[i]=='b'){
-            ch.pop_back();
-            int l=sz(ch);
-            while(l--){
-                if(ch[l]>='a'&& ch[l]<='z'){
-                    if(l>=0){
-                        ch.erase(ch.begin()+l);
-                        break;
-                    }
-                }
-            }
+    char arr[8]={'a','b','c','d','e','f','g','h'};
+    int k = (static_cast<int>(s[1]))-48;
+    for(int i=0;i<8;i++){
+        if(k!=(i+1)){
+            cout<<s[0]<<i+1<<endl;
         }
-    }
-    vc chh;
-    int x = sz(ch);
-    for(int i=0;i<x;i++){
-        chh.pb(ch[i]);
-        if(ch[i]=='B'){
-            chh.pop_back();
-            int l=sz(chh);
-            while(l--){
-                if(chh[l]>='A'&& chh[l]<='Z'){
-                    if(l>=0){
-                        chh.erase(chh.begin()+l);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    for(auto x:chh){
-        cout<<x;
-    } 
-    cout<<endl;
 
+        if(arr[i]!=s[0]){
+            cout<<arr[i]<<k<<endl;
+        }
+    }
 }
 
 int32_t main()

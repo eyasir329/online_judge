@@ -14,45 +14,33 @@ void solve()
 {
     string s;
     cin>>s;
-    int k = sz(s);
-    vc ch;
+    vi m,n;
     for(int i=0;i<sz(s);i++){
-        ch.pb(s[i]);
-        if(s[i]=='b'){
-            ch.pop_back();
-            int l=sz(ch);
-            while(l--){
-                if(ch[l]>='a'&& ch[l]<='z'){
-                    if(l>=0){
-                        ch.erase(ch.begin()+l);
-                        break;
-                    }
-                }
-            }
+        if((s[i]>='a'&& s[i]<='z') && s[i]!='b'){
+            m.pb(i);
         }
-    }
-    vc chh;
-    int x = sz(ch);
-    for(int i=0;i<x;i++){
-        chh.pb(ch[i]);
-        if(ch[i]=='B'){
-            chh.pop_back();
-            int l=sz(chh);
-            while(l--){
-                if(chh[l]>='A'&& chh[l]<='Z'){
-                    if(l>=0){
-                        chh.erase(chh.begin()+l);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    for(auto x:chh){
-        cout<<x;
-    } 
-    cout<<endl;
 
+        if(s[i]=='b' && sz(m)>=1){
+            m.pop_back();
+        }
+    }
+
+    for(int i=0;i<sz(s);i++){
+        if(s[i]>='A'&& s[i]<='Z' && s[i]!='B'){
+            n.pb(i);
+        }
+
+        if(s[i]=='B' && sz(n)>=1){
+            n.pop_back();
+        }
+    }
+
+    m.insert(m.end(),n.begin(),n.end());
+    sort(all(m));
+    for(auto i:m){
+        cout<<s[i];
+    }
+    cout<<endl;
 }
 
 int32_t main()
