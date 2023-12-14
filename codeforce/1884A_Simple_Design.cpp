@@ -13,14 +13,29 @@ using namespace std;
 #define vc vector <char>
 #define all(a) a.begin(),a.end()
 #define sz(a) ((int) a.size())
-#define tos(x) to_string(x);
-#define sin(x) static_cast<int>(x)-48;
 #define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
 #define endl '\n'
 
+int sum(int x){
+	int temp=0;
+	string s = to_string(x);
+	for(int i=0;i<sz(s);i++){
+		temp+=static_cast<int>(s[i])-48;
+	}
+	return temp;
+}
+
 void solve()
 {
+	int x,k;
+	cin>>x>>k;
 
+	for(int i=x;;i++){
+		if(sum(i)%k==0){
+			cout<<i<<endl;
+			return;
+		}
+	}
 }
 
 int32_t main()
@@ -32,15 +47,13 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    ll t = 1,i=1;
+
+    ll t = 1;
     cin >> t;
-    while (t--){
-        auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        solve();
-        auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" Run Time "<<e-s<<endl;
-        i++;
-    }
+
+    while (t--) solve();
+
+    cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
     return 0;
 }
 

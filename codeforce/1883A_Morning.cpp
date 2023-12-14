@@ -20,8 +20,41 @@ using namespace std;
 
 void solve()
 {
-
+	string s = "1234567890";
+	string x;
+	cin>>x;
+	int count = 0;
+	for(int i=0;i<4;i++){
+		if(i>0){
+			if(x[i]==x[i-1]){
+				count++;
+			}else{
+				int m = s.find(x[i]);
+				int n = s.find(x[i-1]);
+				count+=(abs(m-n)+1);
+			}
+		}else{
+			int p=s.find(x[i]);
+			if(p==0){
+				count=1;
+			}else{
+				count=1+p;
+			}
+		}
+	}
+	cout<<count<<endl;
 }
+// 4
+// 9
+// 31
+// 27
+// 28
+// 13
+// 25
+// 16
+// 33
+// 24
+
 
 int32_t main()
 {

@@ -20,8 +20,29 @@ using namespace std;
 
 void solve()
 {
+	int n;
+	cin>>n;
+	vi a(n,0),b(n,0);
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+	}
+	int k=1;
+	for(int i=0;i<n;i++){
+		if(a[i]==k){
+			k++;
+			b[i]=k;
+			k++;
+		}else{
+			b[i]=k;
+			k++;
+		}
+	}
 
+	cout<<b[sz(b)-1]<<endl;
 }
+// 8
+// 4
+// 2
 
 int32_t main()
 {
