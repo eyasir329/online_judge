@@ -20,40 +20,39 @@ using namespace std;
 
 void solve()
 {
-    string s,t;
+    string s;
     cin>>s;
-    int ans=-1;
-    queue<int>st;
-    if(sz(s)==1){
-        ans=1;
-    }else if(sz(s)==2){
-        if(s[0]!=s[1]){
-            ans = 0;
+    string output1,output2;
+    int a,b;
+
+    for (int i = 0; i<sz(s); i++) 
+    {
+        if(i>0 and s[i]!='0'){
+            break;
+        }
+        output1 += s[i];
+    }
+    
+    if(sz(output1)<sz(s)){
+        for (int i = sz(output1); i<sz(s); i++) 
+        {
+            output2 += s[i];
+        }
+        a=stoi(output1);
+        b=stoi(output2);
+
+        if(a<b){
+            cout<<a<<" "<<b<<endl;
         }else{
-            ans = 2;
+            cout<<-1<<endl;
         }
     }else{
-        st.push(s[0]);
-        for(int i=1;i<sz(s);i++){
-            if((s[i]=='0' and s[i-1]=='1')||(s[i]=='1' and s[i-1]=='0')){
-                st.pop();
-            }else{
-                st.push(s[i]);
-            }
-        }
+        cout<<-1<<endl;
     }
+    
 
-    if(ans==-1){
-        ans = 0;
-        while(!st.empty()){
-            ans++;
-            // cout<<st.front()<<" ";
-            st.pop();
-        }
-    }
-
-    cout<<ans<<endl;
-
+    
+    
 }
 
 int32_t main()
