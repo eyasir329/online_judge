@@ -2,45 +2,25 @@
 
 using namespace std;
 #define ll long long int
-#define vi vector <int>
-#define vc vector <char>
+#define F first
+#define S second
 #define pb push_back
+#define pp pop_back
+#define vi vector <int>
+#define vii vector <pair<int,int>>
+#define si set <int>
+#define sii set <pair<int,int>>
+#define vc vector <char>
 #define all(a) a.begin(),a.end()
 #define sz(a) ((int) a.size())
+#define tos(x) to_string(x);
+#define sin(x) static_cast<int>(x)-48;
 #define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
 #define endl '\n'
 
-void largestSubarraySum(vi arr,int n){
-    //kadane's algorithms bigO(n)
-    int cs = 0;
-    int largest = 0;
-
-    for(int i=0;i<n;i++){
-    	if((arr[i]%2==0&&arr[i-1]%2!=0)||(arr[i-1]%2==0&&arr[i]%2!=0)){
-    		cs = cs + arr[i];
-        	if(cs<0){
-            	cs = 0;
-        	}
-        	largest = max(largest,cs);
-    	}
-        
-    }
-    cout<<"Largest Sub Array Sum :"<<largest<<endl; 
-}
-
 void solve()
 {
-	int n,a,b;
-	cin>>n;
-	vi arr;
-	for(int i=0;i<n;i++){
-		cin>>a;
-		arr.pb(a);
-	}
-	//sort(all(arr));
-	//print(arr);
-	largestSubarraySum(arr,n);
-	//printSubarraySum(arr,n);
+
 }
 
 int32_t main()
@@ -52,13 +32,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-
-    ll t = 1;
+    ll t = 1,i=1;
     cin >> t;
-
-    while (t--) solve();
-
-    cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
+    while (t--){
+        auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
+        solve();
+        auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
+        cerr<<"Case # "<<i<<" Run Time "<<e-s<<endl;
+        i++;
+    }
     return 0;
 }
 
