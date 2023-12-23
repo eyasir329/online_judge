@@ -18,35 +18,41 @@ using namespace std;
 #define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
 #define endl '\n'
 
-void solve()
-{
-    int n;
-    cin>>n;
-    
-    int a,b;
-    int u=0,d=0,l=0,r=0;
-    for(int i=1;i<=n;i++){
-        cin>>a>>b;
-        if(a>0){
-            r=1;
-        }else{
-            l=1;
-        }
-
-        if(b>0){
-            u=1;
-        }else{
-            d=1;
-        }
-    }
-    
-    if((u+d+l+r)==4){
-        cout<<"NO"<<endl;
-    }else{
-        cout<<"YES"<<endl;
-    }
+bool prime(int num){
+	if(num==1) return false;
+	for(int i=2;i<num;i++){
+		if(num%i==0) return false;
+	}
+	return true;
 }
 
+void solve()
+{
+	string num;
+	cin>>num;
+	for(int i=0;i<sz(num)-1;i++){
+		for(int j=i+1;j<sz(num);j++){
+			string temp;
+			temp+=num[i];
+			temp+=num[j];
+			if(prime(stoi(temp))){
+				cout<<temp<<endl;
+				return;
+			}
+		}
+	}
+
+	// for(int i=0;i<sz(num);i++){
+	// 	if(num[i]=='1'){
+	// 		cout<<13<<endl;
+	// 		return;
+	// 	}
+	// 	if(num[i]=='3'){
+	// 		cout<<31<<endl;
+	// 		return;
+	// 	}
+	// }
+}
 
 int32_t main()
 {

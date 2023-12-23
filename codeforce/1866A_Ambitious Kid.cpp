@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-#define ll long long int
+#define int long long int
 #define F first
 #define S second
 #define pb push_back
@@ -20,33 +20,19 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    
-    int a,b;
-    int u=0,d=0,l=0,r=0;
-    for(int i=1;i<=n;i++){
-        cin>>a>>b;
-        if(a>0){
-            r=1;
-        }else{
-            l=1;
-        }
-
-        if(b>0){
-            u=1;
-        }else{
-            d=1;
-        }
-    }
-    
-    if((u+d+l+r)==4){
-        cout<<"NO"<<endl;
-    }else{
-        cout<<"YES"<<endl;
-    }
+	int n;
+	cin>>n;
+	int a = 0 ,b;
+	for(int i=0;i<n;i++){
+		if(i==0){
+			cin>>a;
+		}else{
+			cin>>b;
+		}
+		a = min(abs(a),abs(b));
+	}
+	cout<<a<<endl;
 }
-
 
 int32_t main()
 {
@@ -57,8 +43,8 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    ll t = 1,i=1;
-    cin >> t;
+    int t = 1,i=1;
+    // cin >> t;
     while (t--){
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();

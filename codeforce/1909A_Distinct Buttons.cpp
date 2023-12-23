@@ -29,18 +29,19 @@ void solve()
         cin>>a>>b;
         if(a>0){
             r=1;
-        }else{
+        }
+        if(a<0){
             l=1;
         }
-
         if(b>0){
             u=1;
-        }else{
+        }
+        if(b<0){
             d=1;
         }
     }
     
-    if((u+d+l+r)==4){
+    if(u==1 and d==1 and l==1 and r==1){
         cout<<"NO"<<endl;
     }else{
         cout<<"YES"<<endl;

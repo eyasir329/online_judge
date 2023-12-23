@@ -20,33 +20,29 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    
-    int a,b;
-    int u=0,d=0,l=0,r=0;
-    for(int i=1;i<=n;i++){
-        cin>>a>>b;
-        if(a>0){
-            r=1;
-        }else{
-            l=1;
-        }
+	int x,y,n;
+	cin>>x>>y>>n;
+	vi arr(n,0);
+	bool flag = true;
+	int k=n-1;
+	int m=1;
+	arr[k]=y;
+	for(int i=0;i<n-1;i++){
+		arr[k-1]=arr[k]-m;
+		m+=1;
+		k--;
+	}
+	if(arr[0]<x){
+		flag = false;
+	}
 
-        if(b>0){
-            u=1;
-        }else{
-            d=1;
-        }
-    }
-    
-    if((u+d+l+r)==4){
-        cout<<"NO"<<endl;
-    }else{
-        cout<<"YES"<<endl;
-    }
+	if(flag){
+		arr[0]=x;
+		print(arr);
+	}else{
+		cout<<-1<<endl;
+	}
 }
-
 
 int32_t main()
 {

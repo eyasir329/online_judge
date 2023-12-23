@@ -20,33 +20,21 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    
-    int a,b;
-    int u=0,d=0,l=0,r=0;
-    for(int i=1;i<=n;i++){
-        cin>>a>>b;
-        if(a>0){
-            r=1;
-        }else{
-            l=1;
-        }
+	int n;
+	cin>>n;
+	vi a(n,0);
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+	}
+    sort(all(a));
+    if(a[0]==a[sz(a)-1]){
+        cout<<-1<<endl;
+        return;
+    } 
+    vi b,c;
+    b.pb(a[0]);
 
-        if(b>0){
-            u=1;
-        }else{
-            d=1;
-        }
-    }
-    
-    if((u+d+l+r)==4){
-        cout<<"NO"<<endl;
-    }else{
-        cout<<"YES"<<endl;
-    }
 }
-
 
 int32_t main()
 {
