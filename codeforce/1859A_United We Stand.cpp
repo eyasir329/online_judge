@@ -32,9 +32,40 @@ void solve()
         return;
     } 
     vi b,c;
-    b.pb(a[0]);
+    int k=n;
+    for(int i=0;i<n;i++){
+        b.pb(a[i]);
+        for(int j=i+1;j<n;j++){
+            if(a[i]%a[j]==0){
+                b.pb(a[j]);
+            }else{
+                c.pb(a[j]);
+            }
+        }
+        if(i==0){
+            break;
+        }
+        
+    }
+    cout<<sz(b)<<" "<<sz(c)<<endl;
+    print(b);
+    print(c);
 
 }
+// -1
+// 3 2
+// 1 3 5 
+// 2 4 
+// 1 2
+// 1 
+// 3 5 
+// 2 5
+// 1 1 
+// 2 4 7 7 9 
+// 3 2
+// 4 8 4 
+// 12 12 
+
 
 int32_t main()
 {

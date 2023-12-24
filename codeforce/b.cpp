@@ -1,55 +1,31 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-#define int long long int
-#define vi vector <int>
-#define vc vector <char>
+#define ll long long int
+#define F first
+#define S second
 #define pb push_back
+#define pp pop_back
+#define vi vector <int>
+#define vii vector <pair<int,int>>
+#define si set <int>
+#define sii set <pair<int,int>>
+#define vc vector <char>
 #define all(a) a.begin(),a.end()
 #define sz(a) ((int) a.size())
+#define tos(x) to_string(x);
+#define sin(x) static_cast<int>(x)-48;
 #define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
 #define endl '\n'
 
 void solve()
 {
-    int n,k;
-    cin>>n>>k;
-    vi v(n,0);
-    for(int i=0;i<n;i++){
-         v[i]=i+1;
-    }
-    if(k==n){
-        print(v);
-    }else if(k==0){
-        reverse(all(v));
-        print(v);
-    }else{
-        int m=n-k+1;
-        vi p(k,0),q(n,0);
-        int l=0;
-        while(k--){
-            p[l]=m;
-            m++;
-            l++;
-        }
-        sort(all(p));
-
-        cout<<1<<" ";
-        for(int i=0;i<sz(p);i++){
-            cout<<p[i]<<" ";
-        }
-        int y = p[0];
-        while(y--){
-            if(y>1){
-                cout<<y<<" ";
-            }else{
-                break;
-            }
-            
-        }
-        
-        cout<<endl;
-    }
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    sort(all(s));
+    print(s);
 }
 
 int32_t main()
@@ -61,13 +37,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-
-    int t = 1;
+    ll t = 1,i=1;
     cin >> t;
-
-    while (t--) solve();
-
-    cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
+    while (t--){
+        auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
+        solve();
+        auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
+        cerr<<"Case # "<<i<<" Run Time "<<e-s<<endl;
+        i++;
+    }
     return 0;
 }
 
