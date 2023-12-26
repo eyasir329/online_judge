@@ -25,8 +25,40 @@ using namespace std;
 
 void solve()
 {
-
+	int n;
+	cin>>n;
+	vi arr(n,0);
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+	
+	if(srt(arr)){
+		cout<<"YES"<<endl;
+	}else{
+		vi c;
+		in(c,c.end(),all(arr));
+		sort(all(c));
+		bool flag = true;
+		for(int i=0;i<n;i++){
+			if((c[i]%2==0 and arr[i]%2!=0) or(c[i]%2!=0 and arr[i]%2==0)){
+				flag = false;
+				break;
+			}
+		}
+		if(flag){
+			cout<<"YES"<<endl;
+		}else{
+			cout<<"NO"<<endl;
+		}
+		
+	}
 }
+// YES
+// YES
+// NO
+// NO
+// YES
+// NO
 
 int32_t main()
 {

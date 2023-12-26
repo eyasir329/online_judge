@@ -2,31 +2,54 @@
 
 using namespace std;
 #define ll long long int
+#define F first
+#define S second
 #define pb push_back
 #define pp pop_back
 #define vi vector <int>
 #define vii vector <pair<int,int>>
+#define si set <int>
+#define sii set <pair<int,int>>
 #define vc vector <char>
 #define all(a) a.begin(),a.end()
 #define sz(a) ((int) a.size())
-/* --------------------------------------------
----must be initialise in another variable ----*/
-#define is(num) to_string(num);
-#define ci(ch) static_cast<int>(ch)-48;//A-65 int('0')
-#define si(str) stoi(str);
-/*-------------------------------------------*/
-#define MIN(a) *min_element(all(a))
-#define MAX(a) *max_element(all(a))
-#define srt(a) is_sorted(all(a))//range1,range2
-#define in(a,pos,num) a.insert(pos,num)
-#define er(a,pos) a.erase(a.begin()+pos)
+#define tos(x) to_string(x);
+#define sin(x) static_cast<int>(x)-48;
 #define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
 #define endl '\n'
 
 void solve()
 {
-
+	int n;cin>>n;
+	vi arr(n,0);
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+	if(is_sorted(all(arr))){
+		int min_diff = INT_MAX;
+		for(int i=0;i<n-1;i++){
+			if(abs(arr[i+1]-arr[i])<min_diff){
+				min_diff = abs(arr[i+1]-arr[i]);
+			}
+		}
+		if(min_diff<1){
+			cout<<min_diff+1<<endl;
+		}else if(min_diff<3){
+			cout<<min_diff<<endl;
+		}else{
+			int a=1;
+			int b= min_diff+1;
+			int ans =ceil(min_diff/2)+1;
+			cout<<ans<<endl;
+		}
+	}else{
+		cout<<0<<endl;
+	}
 }
+// 1
+// 2
+// 0
+// 3
 
 int32_t main()
 {

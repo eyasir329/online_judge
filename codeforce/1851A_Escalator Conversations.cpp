@@ -25,7 +25,29 @@ using namespace std;
 
 void solve()
 {
-
+	int n,m,k,H;
+	cin>>n>>m>>k>>H;
+	vi arr(n,0);
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+	int ans = 0;
+	vi temp(m);
+	temp[0]=k;
+	for(int i=1;i<m;i++){
+		temp[i]+=k*(i+1);
+	}
+	for(int i=0;i<n;i++){
+		int dif = abs(arr[i]-H);
+		if(dif<=(m-1)*k){
+			vi::iterator it = find(all(temp),dif);
+			if(it!=temp.end()){
+				cout<<arr[i]<<" "<<dif<<endl;
+				ans++;
+			}	
+		}
+	}
+	cout<<ans<<endl;
 }
 
 int32_t main()
