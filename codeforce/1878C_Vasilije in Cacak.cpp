@@ -12,7 +12,7 @@ using namespace std;
 #define all(a) a.begin(),a.end()
 #define sz(a) ((int) a.size())
 #define FOR(i,a,b) for(int i=a; i<(b); i++)
-#define FOR(i,a) for(int i=0; i<(a); i++)
+#define F0R(i,a) for(int i=0; i<(a); i++)
 /* --------------------------------------------
 ---must be initialise in another variable ----*/
 #define is(num) to_string(num);
@@ -32,7 +32,15 @@ using namespace std;
 
 void solve()
 {
-
+	int n,k,x;
+	cin>>n>>k>>x;
+	int sum1 = (k*(k+1))/2;
+	int sum2 = (n*(n+1)-(n-k)*(n-k+1))/2;
+	if(sum1>x || sum2<x){
+		no;
+	}else{
+		yes;
+	}
 }
 
 int32_t main()
