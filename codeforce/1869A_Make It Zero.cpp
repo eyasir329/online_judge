@@ -32,7 +32,24 @@ using namespace std;
 
 void solve()
 {
+	int n;
+	cin>>n;
+	vi arr(n);
+	FOR(i,n) cin>>arr[i];
+	vii ans;
+	ans.pb({1,n});
+	if(n%2==0){
+		ans.pb({1,n});
+	}else{
+		ans.pb({1,n-1});
+		ans.pb({n-1,n});
+		ans.pb({n-1,n});
+	}
 
+	cout<<sz(ans)<<endl;
+	for(auto x:ans){
+		cout<<x.ff<<" "<<x.ss<<endl;
+	}
 }
 
 int32_t main()

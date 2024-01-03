@@ -32,8 +32,27 @@ using namespace std;
 
 void solve()
 {
+	int n,d,s;
+	cin>>n;
+	int last = 0;
+	vii arr;
+	for(int i=0;i<n;i++){
+		cin>>d>>s;
+		arr.pb({d,s});
+	}
+	sort(all(arr));
+	for(int i=0;i<n;i++){
+		int m = ceil((arr[i].ss-1)/2);
+		if(i==0){
+			last = arr[i].ff+m;
+		}else{
+			last = min(last,(arr[i].ff+m));
+		}
 
+	}
+	cout<<last<<endl;
 }
+
 
 int32_t main()
 {

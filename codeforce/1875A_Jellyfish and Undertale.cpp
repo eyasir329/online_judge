@@ -32,7 +32,16 @@ using namespace std;
 
 void solve()
 {
-
+	int a,b,n;
+	cin>>a>>b>>n;
+	vi arr(n);
+	FOR(i,n) cin>>arr[i];
+	
+	int ans = b;
+	FOR(i,n){
+		ans += min(a-1,arr[i]);
+	}
+	cout<<ans<<endl;
 }
 
 int32_t main()
