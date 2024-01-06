@@ -32,17 +32,24 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
-    if(a==b or (a%2==0 and b%2==0)){
-        cout<<"Bob"<<endl;
-    }else{
-        if(a%2==0 or b%2==0){
-            cout<<"Alice"<<endl;
-        }else{
-            cout<<"Bob"<<endl;
-        }
-    }
+	int n,m,k;
+	cin>>n>>m>>k;
+	int a,b;
+	cin>>a>>b;
+	vii arr;
+	int x,y;
+	bool flag = true;
+	FOR(i,k){
+		cin>>x>>y;
+		if(((x+y)%2)==((a+b)%2)){
+			flag=false;
+		}
+	}
+	if(flag){
+		yes;
+	}else{
+		no;
+	}
 }
 
 int32_t main()

@@ -32,17 +32,39 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
-    if(a==b or (a%2==0 and b%2==0)){
-        cout<<"Bob"<<endl;
-    }else{
-        if(a%2==0 or b%2==0){
-            cout<<"Alice"<<endl;
-        }else{
-            cout<<"Bob"<<endl;
-        }
-    }
+	int n,k;
+	cin>>n>>k;
+	vi arr(n);
+	FOR(i,n) cin>>arr[i];
+	sort(all(arr));
+
+	vi temp;
+	temp.pb(1);
+	for(int i=1;i<n;i++){
+		if(abs(arr[i]-arr[i-1]<=k)){
+			temp.pb(1);
+		}else{
+			temp.pb(0);
+			temp.pb(1);
+		}
+	}
+	int ans = 0 , one = 1;
+	for(int i=0;i<sz(temp)-1;i++){
+		if(temp[i]==temp[i+1] and temp[i]==1){
+			one++;
+		}else{
+			ans = max(ans,one);
+			one = 1;
+		}
+		ans = max(ans,one);
+	}
+	if(n==1){
+		cout<<0<<endl;
+	}else{
+		cout<<n-ans<<endl;
+	}
+	
+
 }
 
 int32_t main()

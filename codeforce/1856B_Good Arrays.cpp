@@ -32,17 +32,23 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
-    if(a==b or (a%2==0 and b%2==0)){
-        cout<<"Bob"<<endl;
-    }else{
-        if(a%2==0 or b%2==0){
-            cout<<"Alice"<<endl;
-        }else{
-            cout<<"Bob"<<endl;
-        }
-    }
+	int n;
+	cin>>n;
+	vi arr(n);
+	int one = 0;
+	int sum = 0;
+	FOR(i,n) cin>>arr[i];
+	for(int i=0;i<n;i++){
+		if(arr[i]==1){
+			one++;
+		}
+		sum+=arr[i];
+	}
+	if(sum>=one+n and sz(arr)>1){
+		yes;
+	}else{
+		no;
+	}
 }
 
 int32_t main()

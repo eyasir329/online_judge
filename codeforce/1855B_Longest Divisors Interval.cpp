@@ -32,17 +32,17 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
-    if(a==b or (a%2==0 and b%2==0)){
-        cout<<"Bob"<<endl;
-    }else{
-        if(a%2==0 or b%2==0){
-            cout<<"Alice"<<endl;
-        }else{
-            cout<<"Bob"<<endl;
-        }
-    }
+	int n;
+	cin>>n;
+	int ctn = 0;
+	for(int i=1;i<=n;i++){
+		if(n%i==0){
+			ctn++;
+		}else{
+			break;
+		}
+	}
+	cout<<ctn<<endl;
 }
 
 int32_t main()

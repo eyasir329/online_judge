@@ -1,26 +1,71 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-#define ll long long int
-#define F first
-#define S second
+#define int long long int
 #define pb push_back
 #define pp pop_back
+#define ff first
+#define ss second
 #define vi vector <int>
 #define vii vector <pair<int,int>>
-#define si set <int>
-#define sii set <pair<int,int>>
 #define vc vector <char>
 #define all(a) a.begin(),a.end()
 #define sz(a) ((int) a.size())
-#define tos(x) to_string(x);
-#define sin(x) static_cast<int>(x)-48;
+#define F0R(i,a,b) for(int i=a; i<(b); i++)
+#define FOR(i,a) for(int i=0; i<(a); i++)
+/* --------------------------------------------
+---must be initialise in another variable ----*/
+#define is(num) to_string(num);
+#define ci(ch) static_cast<int>(ch)-48;//A-65 0-48 a-97
+#define si(str) stoi(str);
+/*-------------------------------------------*/
+#define MIN(a) *min_element(all(a))
+#define MAX(a) *max_element(all(a))
+#define SUM(a)  accumulate(all(a), 0LL)
+#define SRT(a)  is_sorted(all(a))//range1,range2
+#define IN(a,pos,num) a.insert(pos,num)
+#define DE(a,pos) a.erase(a.begin()+pos)
 #define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
 #define endl '\n'
+#define yes cout<<"YES"<<endl
+#define no cout<<"NO"<<endl
 
 void solve()
 {
+    int n;
+    cin>>n;
+    vi arr(n);
+    FOR(i,n) cin>>arr[i];
 
+    int ans = 0;
+    vi a,b;
+    a.pb(10000000000);
+    b.pb(10000000000);
+    for(int i=0;i<n-1;i++){
+        if(arr[i]<a[sz(a)-1]){
+            a.pb(arr[i]);
+        }else{
+            b.pb(arr[i]);
+        }
+    }
+    if(arr[n-1]<a[sz(a)-1]){
+        a.pb(arr[n-1]);
+    }else{
+        b.pb(arr[n-1]);
+    }
+
+    // print(a);
+    // print(b);
+
+    int temp=0;
+
+    for(int i=1;i<sz(b)-1;i++){
+        if(b[i]<b[i+1]){
+            temp++;
+        }
+    }
+
+    cout<<temp<<endl;
 }
 
 int32_t main()
@@ -32,20 +77,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    ll t = 1,i=1;
+    int t = 1,i=1;
     cin >> t;
     while (t--){
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" Run Time "<<e-s<<endl;
+        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
         i++;
     }
+    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
     return 0;
 }
-
-
-/*===============================================
-  :::::::::::::Author :Eyasir Ahamed:::::::::::::
-  :::::::::::::::eyasir329.com:::::::::::::::::::
-  ===============================================*/

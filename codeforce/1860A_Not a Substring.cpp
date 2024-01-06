@@ -32,17 +32,28 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
-    if(a==b or (a%2==0 and b%2==0)){
-        cout<<"Bob"<<endl;
-    }else{
-        if(a%2==0 or b%2==0){
-            cout<<"Alice"<<endl;
-        }else{
-            cout<<"Bob"<<endl;
-        }
-    }
+	string s;
+	cin>>s;
+	string s1,s2;
+	for(int i=0;i<sz(s);i++){
+		s1+="()";
+		s2+="(";
+	}
+	for(int i=0;i<sz(s);i++){
+		s2+=")";
+	}
+
+	if(sz(s)==2 and s=="()"){
+		no;
+	}else{
+		yes;
+		if(s1.find(s)==string::npos){
+			cout<<s1<<endl;
+		}else{
+			cout<<s2<<endl;
+		}
+	}
+
 }
 
 int32_t main()
