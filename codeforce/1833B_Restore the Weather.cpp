@@ -32,54 +32,35 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    int ans = 0;
-    int g=0,l=0;
-    vi x;
-    int a,b;
-    for(int i=0;i<n;i++){
-        cin>>a>>b;
-        if(a==1){
-            if(g==0){
-                g=b;
-            }else{
-                g = max(g,b);
-            }
-            
-        }
-        if(a==2){
-            if(l==0){
-                l=b;
-            }else{
-                l=min(l,b);
-            }
-            
-        }
-        if(a==3){
-            x.pb(b);
-        }
-    }
-    int p=0;
-    sort(all(x));
-    for(int i=0;i<sz(x);i++){
-        if(x[i]>=g and x[i]<=l){
-            if((i<sz(x)-1) and x[i]<x[i+1]){
-                p++;
-            }
+	int n,k;
+    cin>>n>>k;
+    vi a(n);
+    vi b(n);
+    FOR(i,n) cin>>a[i];
+    FOR(i,n) cin>>b[i];
 
-            if(i==sz(x)-1){
-                p++;
-            }
-            
-        }
+    vii temp;
+    for(int i=0;i<n;i++){
+        temp.pb({a[i],i});
     }
-    
-    if((l-g-p+1)>=0){
-        cout<<l-g-p+1<<endl;
-    }else{
-        cout<<0<<endl;
+
+    sort(all(temp));
+    sort(all(b));
+
+    int m=0;
+    for(auto &x:temp){
+        x.ff=b[m];
+        m++;
     }
+
+    sort(temp.begin(), temp.end(), [](auto &left, auto &right) {
+        return left.second < right.second;
+    });
+
+    for(int i=0;i<n;i++){
+        cout<<temp[i].ff<<" ";
+    }
+    cout<<endl;
 }
 
 int32_t main()

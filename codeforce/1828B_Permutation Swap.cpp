@@ -32,54 +32,17 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    int ans = 0;
-    int g=0,l=0;
-    vi x;
-    int a,b;
-    for(int i=0;i<n;i++){
-        cin>>a>>b;
-        if(a==1){
-            if(g==0){
-                g=b;
-            }else{
-                g = max(g,b);
-            }
-            
-        }
-        if(a==2){
-            if(l==0){
-                l=b;
-            }else{
-                l=min(l,b);
-            }
-            
-        }
-        if(a==3){
-            x.pb(b);
-        }
-    }
-    int p=0;
-    sort(all(x));
-    for(int i=0;i<sz(x);i++){
-        if(x[i]>=g and x[i]<=l){
-            if((i<sz(x)-1) and x[i]<x[i+1]){
-                p++;
-            }
-
-            if(i==sz(x)-1){
-                p++;
-            }
-            
-        }
-    }
-    
-    if((l-g-p+1)>=0){
-        cout<<l-g-p+1<<endl;
-    }else{
-        cout<<0<<endl;
-    }
+	int n;
+	cin>>n;
+	vi arr(n);
+	FOR(i,n) cin>>arr[i];
+	int k = 0;
+	for(int i=0;i<n;i++){
+		if(abs(i+1-arr[i])!=0){
+			k = __gcd(k,abs(i+1-arr[i]));
+		}
+	}
+	cout<<k<<endl;
 }
 
 int32_t main()

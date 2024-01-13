@@ -34,52 +34,46 @@ void solve()
 {
     int n;
     cin>>n;
-    int ans = 0;
-    int g=0,l=0;
-    vi x;
-    int a,b;
+    string s;
+    cin>>s;
+
+    int g = 1;
+    int a = 1;
+    bool f1 = false;
     for(int i=0;i<n;i++){
-        cin>>a>>b;
-        if(a==1){
-            if(g==0){
-                g=b;
-            }else{
-                g = max(g,b);
-            }
-            
-        }
-        if(a==2){
-            if(l==0){
-                l=b;
-            }else{
-                l=min(l,b);
-            }
-            
-        }
-        if(a==3){
-            x.pb(b);
+        if(s[i]=='<'){
+            g++;
+            f1=true;
+        }else{
+            a = max(a,g);
+            g=1;
+            continue;
         }
     }
-    int p=0;
-    sort(all(x));
-    for(int i=0;i<sz(x);i++){
-        if(x[i]>=g and x[i]<=l){
-            if((i<sz(x)-1) and x[i]<x[i+1]){
-                p++;
-            }
 
-            if(i==sz(x)-1){
-                p++;
-            }
-            
+    if(f1){
+        a = max(a,g);
+    }
+
+    int l = 1;
+    int b = 1;
+    bool f2 = false;
+    for(int i=0;i<n;i++){
+        if(s[i]=='>'){
+             l++;
+             f2=true;
+        }else{
+            b = max(b,l);
+            l=1;
+            continue;
         }
     }
     
-    if((l-g-p+1)>=0){
-        cout<<l-g-p+1<<endl;
-    }else{
-        cout<<0<<endl;
+    if(f2){
+        b = max(b,l);
     }
+
+    cout<<max(a,b)<<endl;
 }
 
 int32_t main()

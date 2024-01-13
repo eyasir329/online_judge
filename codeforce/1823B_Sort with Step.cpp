@@ -32,54 +32,30 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    int ans = 0;
-    int g=0,l=0;
-    vi x;
-    int a,b;
-    for(int i=0;i<n;i++){
-        cin>>a>>b;
-        if(a==1){
-            if(g==0){
-                g=b;
-            }else{
-                g = max(g,b);
-            }
-            
-        }
-        if(a==2){
-            if(l==0){
-                l=b;
-            }else{
-                l=min(l,b);
-            }
-            
-        }
-        if(a==3){
-            x.pb(b);
-        }
-    }
-    int p=0;
-    sort(all(x));
-    for(int i=0;i<sz(x);i++){
-        if(x[i]>=g and x[i]<=l){
-            if((i<sz(x)-1) and x[i]<x[i+1]){
-                p++;
-            }
+	int n,k;
+	cin>>n>>k;
+	vi arr(n+1);
+	F0R(i,1,n+1) cin>>arr[i];
 
-            if(i==sz(x)-1){
-                p++;
-            }
-            
-        }
-    }
-    
-    if((l-g-p+1)>=0){
-        cout<<l-g-p+1<<endl;
-    }else{
-        cout<<0<<endl;
-    }
+	int x=0;
+	for(int i=1;i<=n;i++){
+		if(abs(arr[i]-i)!=0){
+			int y = abs(arr[i]-i);
+			if(__gcd(k,y)!=k){
+				x++;
+			}
+		}
+		
+	}
+
+	if(x==0){
+		cout<<0<<endl;
+	}else if(x==2){
+		cout<<1<<endl;
+	}else{
+		cout<<-1<<endl;
+	}
+
 }
 
 int32_t main()

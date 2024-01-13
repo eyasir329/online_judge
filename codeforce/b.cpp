@@ -32,24 +32,21 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    int p=0,m=0;
-    for(int i=0;i<n;i++){
-        if(s[i]=='+'){
-            p++;
-        }else{
-            m++;
-        }
-    }
-    // cout<<p<<" "<<m<<endl;
+    int n,k,x;
+    cin>>n>>k>>x;
+    vi arr(n);
+    FOR(i,n) cin>>arr[i];
+    sort(all(arr));
+    reverse(all(arr));
+    print(arr);
+    
+    int sum1 = accumulate(arr.begin(),arr.begin()+k, 0LL);
+    int sum2 = accumulate(arr.begin(),arr.begin()+x, 0LL);
+    int sum3 = accumulate(arr.begin()+x,arr.end(), 0LL);
+    int sum = SUM(arr);
 
-    if(p>m){
-        cout<<p-m<<endl;
-    }else{
-        cout<<m-p<<endl;
+    if(sum3>sum2){
+        cout<<sum3-sum2<<endl;
     }
 }
 

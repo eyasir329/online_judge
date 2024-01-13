@@ -32,54 +32,18 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    int ans = 0;
-    int g=0,l=0;
-    vi x;
-    int a,b;
-    for(int i=0;i<n;i++){
-        cin>>a>>b;
-        if(a==1){
-            if(g==0){
-                g=b;
-            }else{
-                g = max(g,b);
-            }
-            
-        }
-        if(a==2){
-            if(l==0){
-                l=b;
-            }else{
-                l=min(l,b);
-            }
-            
-        }
-        if(a==3){
-            x.pb(b);
-        }
-    }
-    int p=0;
-    sort(all(x));
-    for(int i=0;i<sz(x);i++){
-        if(x[i]>=g and x[i]<=l){
-            if((i<sz(x)-1) and x[i]<x[i+1]){
-                p++;
-            }
+	int xa,xb,xc,ya,yb,yc;
+	cin>>xa>>ya;
+	cin>>xb>>yb;
+	cin>>xc>>yc;
 
-            if(i==sz(x)-1){
-                p++;
-            }
-            
-        }
-    }
-    
-    if((l-g-p+1)>=0){
-        cout<<l-g-p+1<<endl;
-    }else{
-        cout<<0<<endl;
-    }
+	int ans = 1;
+    if(xb>xa and xc>xa) ans+= min((abs(xa-xb)),(abs(xa-xc)));
+    if(xb<xa and xc<xa) ans+= min((abs(xa-xb)),(abs(xa-xc)));
+    if(yb>ya and yc>ya) ans+= min((abs(ya-yb)),(abs(ya-yc)));
+    if(yb<ya and yc<ya) ans+= min((abs(ya-yb)),(abs(ya-yc)));
+	
+    cout<<ans<<endl;
 }
 
 int32_t main()
