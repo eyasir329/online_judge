@@ -36,22 +36,21 @@ void solve()
     cin>>n>>k>>x;
     vi arr(n);
     FOR(i,n) cin>>arr[i];
-    sort(all(arr));
-    reverse(all(arr));
-    print(arr);
-    
-    int sum1 = accumulate(arr.begin(),arr.begin()+k, 0LL);
-    int sum2 = accumulate(arr.begin(),arr.begin()+x, 0LL);
-    int sum3 = accumulate(arr.begin()+k,arr.begin()+k+x, 0LL);
+    sort(all(arr),greater());
 
-    int sum4 = SUM(arr);
+    vi pre(n+1);
+    F0R(i,1,n+1) pre[i]=pre[i-1]+arr[i-1];
 
+    int ans = LLONG_MIN;
+    int sum = 0;
 
-    int sum = max(sum4-sum1-sum3,sum4-2*sum3);
-
-
-    cout<<sum<<endl;
-
+    for(int i=0;i<=k;i++){
+        int afterRemove = pre[n]-pre[i];
+        int negLast = min(i+x,n);
+        sum = afterRemove-2*(pre[negLast]-pre[i]);
+        ans = max(ans,sum);
+    }
+    cout<<ans<<endl;
     
 }
 

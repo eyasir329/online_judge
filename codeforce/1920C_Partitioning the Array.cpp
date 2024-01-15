@@ -32,15 +32,25 @@ using namespace std;
 
 void solve()
 {
-    int x,y;
-    vii xx;
-    for(int i=0;i<4;i++){
-        cin>>x>>y;
-        xx.pb({x,y});
-    }
-    sort(all(xx));
-    int temp = abs(xx[0].ss-xx[1].ss);
-    cout<<temp*temp<<endl;
+	int n;
+	cin>>n;
+	vi arr(n);
+	FOR(i,n) cin>>arr[i];
+	int ans =0;
+	for(int i=1;i<=n;i++){
+		if(n%i==0){
+			int k = n/i,g=0;
+			for(int j=0;j<k;j++){
+				int diff = 0;
+				for(int l=j;l<n;l+=k){
+					diff = __gcd(diff,abs(arr[j]-arr[l]));
+				}
+				g = __gcd(g,diff);
+			}
+			ans+=(g!=1);
+		}
+	}
+	cout<<ans<<endl;
 }
 
 int32_t main()
