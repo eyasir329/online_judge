@@ -32,66 +32,14 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    string s,a;
-    cin>>s>>a;
-    int ans = 0,s1=0,a1=0;
-    int flag =true;
-    for(int i=0;i<n;i++){
-        if((a[i]=='1' and s[i]=='1') or (a[i]=='0' and s[i]=='0') ){
-            a[i]='0';
-            s[i]='0';
+    int n,k;
+    cin>>n>>k;
+    int m=0;
+    for(int i=1;i<=n;i++){
+        if(i%10==0){
+            
         }
     }
-
-    for(int i=0;i<n;i++){
-        if(a[i]!=s[i]){
-            flag=false;
-            break;
-        }
-    }
-
-
-    for(int i=0;i<n;i++){
-        if(s[i]=='1'){
-            s1++;
-        }
-
-        if(a[i]=='1'){
-            a1++;
-        }
-    }
-
-    if(a1>s1){
-        int t =0 ;
-        for(int i=0;i<n;i++){
-            a1--;
-            t++;
-            if(a1==s1){
-                break;
-            }
-        }
-        cout<<t+s1<<endl;
-    }else if(a1<s1){
-        int t =0 ;
-        for(int i=0;i<n;i++){
-            s1--;
-            t++;
-            if(s1==a1){
-                break;
-            }
-        }
-        cout<<t+a1<<endl;
-    }else{
-        if(flag){
-            cout<<0<<endl;
-        }else{
-            cout<<a1<<endl;
-        }
-        
-    }
- 
 }
 
 int32_t main()

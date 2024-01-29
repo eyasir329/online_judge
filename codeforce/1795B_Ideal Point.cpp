@@ -34,23 +34,31 @@ void solve()
 {
     int n,k;
     cin>>n>>k;
-    int x = n*k;
-    string s="abcdefghijklmnopqrstuvwxyz";
-    vc xt;
-    for(int i=0;i<k;i++){
-        xt.pb(s[i]);
-    }
+    int l,r;
+    vii v;
     int m = 0;
-    for(int i=0;i<k;i++){
-        for(int j=0;j<n;j++){
-            if(m==k) {
-                m=0;
-            }
-            cout<<xt[m];
-            m++;
+    for(int i=0;i<n;i++){
+        cin>>l>>r;
+        if(l<=k and r>=k){
+            v.pb({l,r});
+        }
+
+        m = max(m,max(l,r));
+    }
+    vi extra(m+1);
+    for(auto x:v){
+        for(int i=x.ff;i<=x.ss;i++){
+            extra[i]++;
         }
     }
-    cout<<endl;
+    int ctn = 0;
+    for(int i=0;i<sz(extra);i++){
+        if(extra[i]==extra[k]){
+            ctn++;
+        }
+    }
+    (extra[k]==MAX(extra) and ctn==1)?yes:no;
+
 }
 
 int32_t main()

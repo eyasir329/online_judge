@@ -30,27 +30,51 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
-void solve()
+int nCr(int n, int r)
 {
-    int n,k;
-    cin>>n>>k;
-    int x = n*k;
-    string s="abcdefghijklmnopqrstuvwxyz";
-    vc xt;
-    for(int i=0;i<k;i++){
-        xt.pb(s[i]);
-    }
-    int m = 0;
-    for(int i=0;i<k;i++){
-        for(int j=0;j<n;j++){
-            if(m==k) {
-                m=0;
-            }
-            cout<<xt[m];
-            m++;
+    long long p = 1, k = 1;
+    if (n - r < r)
+        r = n - r;
+ 
+    if (r != 0) {
+        while (r) {
+            p *= n;
+            k *= r;
+ 
+            // gcd of p, k
+            long long m = gcd(p, k);
+            p /= m;
+            k /= m;
+ 
+            n--;
+            r--;
         }
     }
-    cout<<endl;
+ 
+    else
+        p = 1;
+ 
+    return p;
+}
+void solve()
+{
+	int n;
+	cin>>n;
+	vi arr(n),sm(n+1);
+	FOR(i,n){
+		cin>>arr[i];
+		sm[arr[i]]++;
+	}
+	int big=0,cn=0;
+	int ans=0;
+	for(int i=0;i<sz(sm);i++){
+		big=sm[i];
+		int cn1 =(big>2)?(nCr(big,3)):0;
+		int cn2 =(big>1)?(nCr(big,2)*ans):0;
+		cn+=(cn1+cn2);
+		ans+=sm[i];
+	}
+	cout<<cn<<endl;
 }
 
 int32_t main()

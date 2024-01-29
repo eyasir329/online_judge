@@ -32,25 +32,23 @@ using namespace std;
 
 void solve()
 {
-    int n,k;
-    cin>>n>>k;
-    int x = n*k;
-    string s="abcdefghijklmnopqrstuvwxyz";
-    vc xt;
-    for(int i=0;i<k;i++){
-        xt.pb(s[i]);
-    }
-    int m = 0;
-    for(int i=0;i<k;i++){
-        for(int j=0;j<n;j++){
-            if(m==k) {
-                m=0;
-            }
-            cout<<xt[m];
-            m++;
-        }
-    }
-    cout<<endl;
+	int n,q;
+	cin>>n>>q;
+	vi arr(n);
+	vi sum(n+2,0);
+	FOR(i,n){
+		cin>>arr[i];
+		sum[i+1]=sum[i]+arr[i];
+	}
+	for(int i=0;i<q;i++){
+		int l,r,k;
+		cin>>l>>r>>k;
+		int sum1 = sum[l-1];
+		int sum2 = (r-l+1)*k;
+		int sum3 = sum[n]-sum[r];
+		int sum4 = sum1+sum2+sum3;
+		(sum4%2==0)?no:yes;
+	}
 }
 
 int32_t main()

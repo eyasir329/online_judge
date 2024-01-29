@@ -32,25 +32,33 @@ using namespace std;
 
 void solve()
 {
-    int n,k;
-    cin>>n>>k;
-    int x = n*k;
-    string s="abcdefghijklmnopqrstuvwxyz";
-    vc xt;
-    for(int i=0;i<k;i++){
-        xt.pb(s[i]);
-    }
-    int m = 0;
-    for(int i=0;i<k;i++){
-        for(int j=0;j<n;j++){
-            if(m==k) {
-                m=0;
-            }
-            cout<<xt[m];
-            m++;
+    string a,b;
+    cin>>a>>b;
+    int x=si(a);
+    int x1;
+    int y=si(b);
+    int ans = 0;
+    int temp=0;
+    int k=0;
+    for(int i=x;i<=y;i++){
+        string str = a;
+        sort(all(str));
+        int p = ci(str[0]);
+        int k = ci(str[sz(str)-1]);
+        int m = abs(p-k);
+        if(m>=temp){
+            temp = m;
+            ans = si(a);
         }
+        if(m==9 or i==y){
+            break;
+        }
+        x1 = si(a);
+        x1++;
+        k++;
+        a=is(x1);
     }
-    cout<<endl;
+    cout<<ans<<endl;
 }
 
 int32_t main()

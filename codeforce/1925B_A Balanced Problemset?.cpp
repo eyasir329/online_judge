@@ -32,25 +32,20 @@ using namespace std;
 
 void solve()
 {
-    int n,k;
-    cin>>n>>k;
-    int x = n*k;
-    string s="abcdefghijklmnopqrstuvwxyz";
-    vc xt;
-    for(int i=0;i<k;i++){
-        xt.pb(s[i]);
-    }
-    int m = 0;
-    for(int i=0;i<k;i++){
-        for(int j=0;j<n;j++){
-            if(m==k) {
-                m=0;
-            }
-            cout<<xt[m];
-            m++;
-        }
-    }
-    cout<<endl;
+	int x, n;
+	cin >> x >> n;
+	int ans = 0;
+	for (int i = 1; i * i <= x; i++) {
+		if (x % i == 0) {
+			if (n <= i) {
+				ans = max(ans, x/i);
+			}
+			if (n <= x / i) {
+				ans = max(ans, i);
+			}
+		}
+	}
+	cout << ans << endl;
 }
 
 int32_t main()
