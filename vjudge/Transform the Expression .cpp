@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-#define int long long int
+#define ll long long int
 #define pb push_back
 #define pp pop_back
 #define ff first
@@ -30,15 +30,61 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
+int prec(char c){
+    if(c=='^'){
+        return 3;
+    }else if(c=='/' || c=='*'){
+        return 2;
+    }else if(c=='+' || c=='-'){
+        return 1;
+    }else{
+        return -1;
+    }
+}
+
+char associativity(char c){
+    if(c=='^'){
+        return 'R';
+    }
+    return 'L';
+}
+
 void solve()
 {
-    int n,k;
-    cin>>n>>k;
-    if(k%2==0){
-        cout<<(n*k)/2<<endl;
-    }else{
-        cout<<(n*(k-1))/2<<endl;
+	string s;
+	cin>>s;
+    stack<char>st;
+    vc ch;
+    for(int i=0;i<sz(s);i++){
+        char c = s[i];
+        if((c>='a' and c<='z')||(c>='A' and c<='Z')||(c>='0' and c<='9')){
+            ch.pb(c);
+        }
+        else if(c=='('){
+            st.push('(');
+        }
+        else if(c==')'){
+            while(st.top()!='('){
+                ch.pb(st.top());
+                st.pop();
+            }
+            st.pop();
+        }else{
+            while(!st.empty() and prec(s[i])<prec(st.top()) || !st.empty() and prec(s[i])==prec(st.top()) and associativity(s[i])=='L'){
+                ch.pb(st.top());
+                st.pop();
+            }
+            st.push(c);
+        }
+    } 
+    while(!st.empty()){
+        ch.pb(st.top());
+        st.pop();
+    } 
+    for(int i=0;i<sz(ch);i++){
+        cout<<ch[i];
     }
+    cout<<endl;
 }
 
 int32_t main()
@@ -50,7 +96,7 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    int t = 1,i=1;
+    ll t = 1,i=1;
     cin >> t;
     while (t--){
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);

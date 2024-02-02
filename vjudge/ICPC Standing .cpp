@@ -27,18 +27,18 @@ using namespace std;
 #define DE(a,pos) a.erase(a.begin()+pos)
 #define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
 #define endl '\n'
-#define yes cout<<"YES"<<endl
-#define no cout<<"NO"<<endl
+#define yes cout<<"Yes"<<endl
+#define no cout<<"No"<<endl
 
 void solve()
 {
-    int n,k;
-    cin>>n>>k;
-    if(k%2==0){
-        cout<<(n*k)/2<<endl;
-    }else{
-        cout<<(n*(k-1))/2<<endl;
-    }
+	int p,s,r;
+	cin>>p>>s>>r;
+	if(s==p and r!=1){
+		no;
+		return;
+	}
+	yes;
 }
 
 int32_t main()
@@ -54,6 +54,7 @@ int32_t main()
     cin >> t;
     while (t--){
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
+        cout<<"Case "<<i<<": ";
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
         cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
