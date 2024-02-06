@@ -32,20 +32,35 @@ using namespace std;
 
 void solve()
 {
-    int n,f,a,b;
-    cin>>n>>f>>a>>b;
-    vi arr(n+1);
-    F0R(i,1,n+1) cin>>arr[i];
-    // print(arr);
-    int remain = f;
-    for(int i=1;i<=n;i++){
-        remain = remain - min(b,(arr[i]-arr[i-1])*a);
-        if(remain<=0){
-                no;
-                return;
+    int m, n, k;
+    cin >> m >> n >> k;
+    vi a(m), b(n);
+    FOR(i, m) cin >> a[i];
+    FOR(i, n) cin >> b[i];
+
+    int x = k / 2;
+    sort(all(a));
+    sort(all(b));
+
+    vi aa, bb;
+    for (int i = 1; i <= k; i++) {
+        auto t = find(all(a), i);
+        if (t != a.end()) {
+            aa.pb(i);
+        }
+
+        auto tt = find(all(b), i);
+        if (tt != b.end()) {
+            bb.pb(i);
         }
     }
-    yes;
+
+    cout<<k<<endl;
+    sort(all(aa));
+    sort(all(bb));
+    print(aa);
+    print(bb);
+
 
 }
 
@@ -58,15 +73,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    int t = 1,i=1;
+    int t = 1, i = 1;
     cin >> t;
-    while (t--){
+    while (t--) {
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
+        cerr << "Case # " << i << " RT :" << e - s << endl;
         i++;
     }
-    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
+    cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
     return 0;
 }

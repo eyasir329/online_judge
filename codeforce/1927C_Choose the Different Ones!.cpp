@@ -32,25 +32,50 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    int a,b;
-    for(int i=0;i<n;i++){
-        if(s[i]=='B'){
-            a = i;
-            break;
+    int m, n, k;
+    cin >> m >> n >> k;
+    vi a(m), b(n);
+    FOR(i, m) cin >> a[i];
+    FOR(i, n) cin >> b[i];
+
+    int x = k / 2;
+    sort(all(a));
+    sort(all(b));
+
+    vi aa, bb;
+    for (int i = 1; i <= k; i++) {
+        auto t = find(all(a), i);
+        if (t != a.end()) {
+            aa.pb(i);
+        }
+
+        auto tt = find(all(b), i);
+        if (tt != b.end()) {
+            bb.pb(i);
         }
     }
 
-    for(int i=n-1;i>=0;i--){
-        if(s[i]=='B'){
-            b = i;
-            break;
+    cout<<k<<endl;
+    sort(all(aa));
+    sort(all(bb));
+    print(aa);
+    print(bb);
+
+    vi aaa;
+    for(int i=0;i<sz(aa);i++){
+        auto t = find(all(bb),aa[i]);
+        if(t!=bb.end()){
+
+        } else{
+            aaa.pb(aa[i]);
         }
     }
-    cout<<abs(a-b)+1<<endl;
+
+    for(int i=0;i<sz(aa);i++){
+
+    }
+
+
 }
 
 int32_t main()
@@ -62,15 +87,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    int t = 1,i=1;
+    int t = 1, i = 1;
     cin >> t;
-    while (t--){
+    while (t--) {
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
+        cerr << "Case # " << i << " RT :" << e - s << endl;
         i++;
     }
-    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
+    cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
     return 0;
 }
