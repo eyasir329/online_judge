@@ -32,28 +32,14 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
-
-    if(a%2==0){
-        int x = a/2;                
-        int y = b*2;
-        if(x!=b and y!=a){
-            yes;
-            return;    
-        }
-        
-    }
-    if(b%2==0){
-        int x = b/2;                
-        int y = a*2;
-        if(x!=a and y!=b){
-            yes;
-            return;    
-        }
-        
-    }
-    no;
+	int n,m;
+	cin>>n>>m;
+	vi a(n+1),pre(n+1);
+	F0R(i,1,n+1){
+		cin>>a[i];
+		pre[i]=a[i]+pre[i-1];
+	}
+	cout<<pre[m]<<endl;
 }
 
 int32_t main()
@@ -69,6 +55,7 @@ int32_t main()
     cin >> t;
     while (t--){
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
+        cout<<"Case "<<i<<": ";
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
         cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;

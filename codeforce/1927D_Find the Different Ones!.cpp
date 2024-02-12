@@ -32,28 +32,31 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
-
-    if(a%2==0){
-        int x = a/2;                
-        int y = b*2;
-        if(x!=b and y!=a){
-            yes;
-            return;    
-        }
-        
-    }
-    if(b%2==0){
-        int x = b/2;                
-        int y = a*2;
-        if(x!=a and y!=b){
-            yes;
-            return;    
-        }
-        
-    }
-    no;
+	int n;
+	cin>>n;
+	vi a(n+1);
+	F0R(i,1,n+1) cin>>a[i];
+	vi prev(n+1,-1);
+	prev[0]=-1;
+	for(int i=1;i<=n;i++){
+		if(a[i]==a[i-1]){
+			prev[i]=prev[i-1];
+		}else{
+			prev[i]=i-1;
+		}
+	}
+	int q;
+	cin>>q;
+	int l,r;
+	for(int i=0;i<q;i++){
+		cin>>l>>r;
+		if(prev[r]>=l){
+			cout<<prev[r]<<" "<<r<<endl;
+		}else{
+			cout<<-1<<" "<<-1<<endl;
+		}
+	}
+	cout<<endl;
 }
 
 int32_t main()

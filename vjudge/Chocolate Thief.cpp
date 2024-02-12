@@ -32,28 +32,25 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
+	int n;
+	cin>>n;
+	vector<pair<int,string>>v;
+	for(int i=0;i<n;i++){
+		string s;
+		int l,w,h;
+		cin>>s>>l>>w>>h;
+		int x = l*w*h;
+		v.pb({x,s});
+	}
 
-    if(a%2==0){
-        int x = a/2;                
-        int y = b*2;
-        if(x!=b and y!=a){
-            yes;
-            return;    
-        }
-        
-    }
-    if(b%2==0){
-        int x = b/2;                
-        int y = a*2;
-        if(x!=a and y!=b){
-            yes;
-            return;    
-        }
-        
-    }
-    no;
+	sort(all(v));
+	
+	if(v[0].ff==v[sz(v)-1].ff){
+		cout<<"no thief"<<endl;
+	}else{
+		cout<<v[sz(v)-1].ss<<" took chocolate from "<<v[0].ss<<endl;
+	}
+
 }
 
 int32_t main()
@@ -69,6 +66,7 @@ int32_t main()
     cin >> t;
     while (t--){
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
+        cout<<"Case "<<i<<": ";
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
         cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;

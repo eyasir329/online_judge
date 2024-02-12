@@ -30,30 +30,66 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
+void sort1(vector<string>vs){
+	sort(all(vs));
+	for(int i=0;i<sz(vs);i++){
+		cout<<vs[i]<<endl;
+	}
+	cout<<endl;
+	for(int i=sz(vs)-1;i>=0;i--){
+		cout<<vs[i]<<endl;
+	}
+	cout<<endl;
+}
+void sort2(vector<string>vs){
+	vector<pair<int,string>>vis;
+
+	for(int i=0;i<sz(vs);i++){
+		vis.pb({sz(vs[i]),vs[i]});
+	}
+	sort(all(vis));
+	for(int i=0;i<sz(vis);i++){
+		cout<<vis[i].ss<<endl;
+	}
+	cout<<endl;
+}
+void sort3(vector<string>vs){
+	vector<pair<int,string>>vis;
+	for(int i=0;i<sz(vs);i++){
+		vis.pb({sz(vs[i]),vs[i]});
+	}
+	sort(all(vis));
+
+	vector<pair<string,int>>vv1;
+	for(int i=0;i<sz(vs);i++){
+		vv1.pb({vis[i].ss,vis[i].ff});
+	}
+	sort(all(vv1));
+
+	vector<pair<int,string>>vis1;
+	for(int i=0;i<sz(vs);i++){
+		vis1.pb({vv1[i].ss,vv1[i].ff});
+	}
+	sort(all(vis1));
+	for(int i=0;i<sz(vs);i++){
+		cout<<vis1[i].ss<<endl;
+	}
+	cout<<endl;
+}
+
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
-
-    if(a%2==0){
-        int x = a/2;                
-        int y = b*2;
-        if(x!=b and y!=a){
-            yes;
-            return;    
-        }
-        
-    }
-    if(b%2==0){
-        int x = b/2;                
-        int y = a*2;
-        if(x!=a and y!=b){
-            yes;
-            return;    
-        }
-        
-    }
-    no;
+	int n;
+	cin>>n;
+	vector<string>vs;
+	for(int i=0;i<n;i++){
+		string s;
+		cin>>s;
+		vs.pb(s);
+	}
+	sort1(vs);
+	sort2(vs);
+	sort3(vs);
 }
 
 int32_t main()
@@ -66,7 +102,7 @@ int32_t main()
 
     clock_t z = clock();
     int t = 1,i=1;
-    cin >> t;
+    // cin >> t;
     while (t--){
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();

@@ -32,28 +32,25 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
+    int n;
+    cin >> n;
+    vi a(n);
+    FOR(i, n) {
+        cin >> a[i];
+    }
 
-    if(a%2==0){
-        int x = a/2;                
-        int y = b*2;
-        if(x!=b and y!=a){
-            yes;
-            return;    
-        }
-        
+    sort(all(a));
+    a.erase(unique(a.begin(),a.end()),a.end());
+    print(a);
+    int ans = 0;
+    for (int i = sz(a)-1; i >=0; i--) {
+        int itr=lower_bound(a.begin(),a.end(),a[i]+n)-a.begin();
+        cout<<itr<<" itr "<<i<<" i ";
+        ans = max(ans, itr-i);
     }
-    if(b%2==0){
-        int x = b/2;                
-        int y = a*2;
-        if(x!=a and y!=b){
-            yes;
-            return;    
-        }
-        
-    }
-    no;
+    cout<<endl;
+    // cout << ans << endl;
+
 }
 
 int32_t main()
@@ -65,15 +62,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    int t = 1,i=1;
+    int t = 1, i = 1;
     cin >> t;
-    while (t--){
+    while (t--) {
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
+        cerr << "Case # " << i << " RT :" << e - s << endl;
         i++;
     }
-    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
+    cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
     return 0;
 }

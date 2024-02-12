@@ -32,48 +32,28 @@ using namespace std;
 
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
 
-    if(a%2==0){
-        int x = a/2;                
-        int y = b*2;
-        if(x!=b and y!=a){
-            yes;
-            return;    
-        }
-        
-    }
-    if(b%2==0){
-        int x = b/2;                
-        int y = a*2;
-        if(x!=a and y!=b){
-            yes;
-            return;    
-        }
-        
-    }
-    no;
 }
 
 int32_t main()
 {
-
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
 
-    clock_t z = clock();
-    int t = 1,i=1;
-    cin >> t;
-    while (t--){
-        auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        solve();
-        auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
-        i++;
-    }
-    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
-    return 0;
+	clock_t z = clock();
+	int t = 1, i = 1;
+	cin >> t;
+	while (t--) {
+		auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
+		solve();
+		auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
+		cerr << "Case # " << i << " RT :" << e - s << endl;
+		i++;
+	}
+	cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
+	return 0;
 }

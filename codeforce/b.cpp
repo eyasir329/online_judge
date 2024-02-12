@@ -34,43 +34,21 @@ void solve()
 {
     int n;
     cin >> n;
-    vii a(n);
+    vi a(n);
     FOR(i, n) {
-        cin >> a[i].ff;
-        a[i].ss = i;
+        cin >> a[i];
     }
+
     sort(all(a));
-    string s = "abcdefghijklmnopqrstuvwxyz";
-    vc k;
+    a.erase(unique(a.begin(),a.end()),a.end());
 
-    int m = 0;
-    for (int i = 0; i < n; i++) {
-        if (i == 0) {
-            k.pb(s[m]);
-            m++;
-        } else {
-            if (a[i].ff == a[i - 1].ff) {
-                k.pb(s[m]);
-                m++;
-            } else {
-                k.pb(s[0]);
-                m=1;
-            }
-        }
+    int ans = 0;
+    for (int i = sz(a)-1; i >=0; i--) {
+        int itr=lower_bound(a.begin(),a.end(),a[i]+n)-a.begin();
 
+        ans = max(ans, itr-i);
     }
-
-    vector<pair<int,char>>vcc;
-    for(int i=0;i<n;i++){
-        vcc.pb({a[i].ss,k[i]});
-    }
-
-    sort(all(vcc));
-
-    for(auto x:vcc){
-        cout<<x.ss;
-    }
-    cout << endl;
+    cout << ans << endl;
 
 }
 

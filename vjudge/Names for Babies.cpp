@@ -30,30 +30,50 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
+void countVector(vector<int>const &out){
+	for(auto it = out.begin();it!=out.end();it++){
+		cout<<*it<<" ";
+	}
+	cout<<endl;
+}
+
+void findCombination(vector<int>a,vector<int>&out,int k,int i,int n){
+	if(out.size()==k){
+		countVector(out);
+		return;
+	}
+	for(int j=i;j<n;j++){
+		out.pb(a[j]);
+		findCombination(a,out,k,j,n);
+		out.pop_back();
+	}
+}
+
 void solve()
 {
-    int a,b;
-    cin>>a>>b;
+	string s;
+	cin>>s;
+	int p,q;
+	cin>>p>>q;
+	map<char, int> m;
+	for(int i=0;i<sz(s);i++){
+		m[s[i]]++;
+	}
+	int com = 1,oc=0;
+	vi a;
+	int k = abs(p-q)+1;
+	for(auto x:m){
+		while(x.ss--){
+			int y = ci(x.ff);
+			y-=48;
+			a.pb(y);
+		}
+	}
 
-    if(a%2==0){
-        int x = a/2;                
-        int y = b*2;
-        if(x!=b and y!=a){
-            yes;
-            return;    
-        }
-        
-    }
-    if(b%2==0){
-        int x = b/2;                
-        int y = a*2;
-        if(x!=a and y!=b){
-            yes;
-            return;    
-        }
-        
-    }
-    no;
+	print(a);
+	vector<int>out;
+	int n = sz(a);
+	findCombination(a,out,k,0,n);
 }
 
 int32_t main()

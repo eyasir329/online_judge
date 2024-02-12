@@ -39,42 +39,53 @@ void solve()
     FOR(i, n) cin >> b[i];
 
     int x = k / 2;
+
     sort(all(a));
     sort(all(b));
 
-    vi aa, bb;
+    vi aa, bb,cc;
+    int t1=-1,t2=-1;
     for (int i = 1; i <= k; i++) {
-        auto t = find(all(a), i);
-        if (t != a.end()) {
+        auto t1 = binary_search(all(a), i);
+        auto t2 = binary_search(all(b), i);
+
+        if(t1!=0 and t2!=0){
+            cc.pb(i);
+        }
+
+        else if (t1 != 0) {
             aa.pb(i);
         }
 
-        auto tt = find(all(b), i);
-        if (tt != b.end()) {
+        else if (t2 != 0) {
             bb.pb(i);
         }
     }
 
-    cout<<k<<endl;
-    sort(all(aa));
-    sort(all(bb));
-    print(aa);
-    print(bb);
+    int k1 = sz(aa);
+    int k2 = sz(bb);
+    int k3 = sz(cc);
 
-    vi aaa;
-    for(int i=0;i<sz(aa);i++){
-        auto t = find(all(bb),aa[i]);
-        if(t!=bb.end()){
-
-        } else{
-            aaa.pb(aa[i]);
+    if(k1<x){
+        int t = x-k1;
+        if(k3>=t){
+            k3-=t;
+        }else{
+            no;
+            return;
         }
     }
 
-    for(int i=0;i<sz(aa);i++){
-
+    if(k2<x){
+        int t = x-k2;
+        if(k3>=t){
+            k3-=t;
+        }else{
+            no;
+            return;
+        }
     }
-
+    yes;
 
 }
 
