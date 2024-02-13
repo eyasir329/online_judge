@@ -49,8 +49,6 @@ void solve()
         ans = max(ans, itr-i);
     }
     cout<<endl;
-    // cout << ans << endl;
-
 }
 
 int32_t main()
