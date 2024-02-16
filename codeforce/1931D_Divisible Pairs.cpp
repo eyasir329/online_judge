@@ -42,16 +42,7 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    vi a(n);
-    FOR(i,n) cin>>a[i];
-    int sum =0;
-    sort(all(a));
-    for(int i=1;i<n;i++){
-        sum+=(a[i]-a[i-1]);
-    }
-    cout<<sum<<endl;
+
 }
 
 int32_t main()

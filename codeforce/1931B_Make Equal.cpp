@@ -39,7 +39,6 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
-
 void solve()
 {
     int n;
@@ -50,8 +49,7 @@ void solve()
       cin>>a[i];
       sum+=a[i];  
     } 
-
-    int k= ceil((float)sum/(float)n);
+    int k= sum/n;
     int b = 0;
     for(int i=0;i<n;i++){
         if(a[i]>k){
@@ -72,11 +70,8 @@ void solve()
                 return;
             }
         }
-        
     }
     yes;
-
-
 }
 
 int32_t main()
