@@ -25,7 +25,7 @@ using namespace std;
 #define UB(a,x) upper_bound(all(a),x)-a.begin() //r-next to real index
 #define FIND(a,x) find(all(a),x) //r-index ..init vi:iterator it/auto..check it!=a.end()
 /*-------------------------------------------*/
-#define REDUCE(a) sort(all(a);a.erase(unique(all(a)),a.end()))
+#define REDUCE(a) sort(all(a));a.erase(unique(all(a)),a.end())
 #define FREQ(a,m) for(auto i=0;i<sz(a);i++) m[a[i]]++ //m like ..map<char,int>m
 #define mPrint(m) for(auto itr=m.begin();itr!=m.end();itr++)cout<<itr->first<<" "<<itr->second<<endl
 #define MIN(a) *min_element(all(a))
@@ -43,53 +43,50 @@ using namespace std;
 void solve()
 {
     int n;
-    cin>>n;
-    vi a(n+1);
-    F0R(i,1,n+1){
-        cin>>a[i];
-    }
-    int ct=0;
-    for(int i=1;i<=n;i++){
-        if(a[i]==a[1]){
-            ct++;
-        }
-        else{
-            break;
-        }
-    }
-    for(int i=n;i>=0;i--){
-        if(a[i]==a[1]){
-            ct++;
-        }
-        else{
-            break;
+    cin >> n;
+    vi a(n + 1);
+    vector<int>s1;
+    vector<int>s2;
+    F0R(i, 1, n + 1) cin >> a[i];
+
+    vi b;
+    b.insert(b.end(),all(a));
+    int l = n + 1;
+    while (l--) {
+        int m = MAX(b);
+        for (int i = 1; i < n + 1; i++) {
+            if (a[i] == m) {
+                s1.pb(m + i);
+                b[i]=-1;
+                break;
+            }
         }
     }
 
-    int ct2=0;
-    for(int i=1;i<=n;i++){
-        if(a[i]==a[n]){
-            ct2++;
-        }
-        else{
-            break;
+    int k = n + 1;
+    while (k--) {
+        int m = MAX(a);
+        for (int i = 1; i < n + 1; i++) {
+            if (a[i] == m) {
+                s2.pb(m + i);
+                DE(a, i);
+                break;
+            }
         }
     }
-    for(int i=n;i>=0;i--){
-        if(a[i]==a[n]){
-            ct2++;
-        }
-        else{
-            break;
+    vi s;
+    s.pb(max(s1[0],s2[0]));
+    for(int i=1;i<n;i++){
+        if(s1[i]>s2[i] and s1[i]!=s1[i-1]){
+            s.pb(s1[i]);
+        }else{
+            s.pb(s2[i]);
         }
     }
 
-    if(SRT(a) and a[1]==a[n]){
-        cout<<0<<endl;
-        return;
-    }
-    cout<<min(n-ct,n-ct2)<<endl;   
-      
+    REDUCE(s);
+    reverse(all(s));
+    print(s);
 }
 
 int32_t main()
@@ -101,15 +98,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    int t = 1,i=1;
+    int t = 1, i = 1;
     cin >> t;
-    while (t--){
+    while (t--) {
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
+        cerr << "Case # " << i << " RT :" << e - s << endl;
         i++;
     }
-    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
+    cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
     return 0;
 }
