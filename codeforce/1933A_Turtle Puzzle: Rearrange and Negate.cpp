@@ -39,20 +39,18 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
+
 void solve()
 {
-    int n;
-    cin>>n;
-    int pos = 1;
-    for(int i=1;i<=n;i++){
-        int x = pow(2,i);
-        if(x>n){
-            break;
-        }else{
-            pos = x;
-        }
-    }
-    cout<<pos<<endl;
+     int n;
+     cin>>n;
+     int sum =0;
+     vi a(n);
+     FOR(i,n){
+        cin>>a[i];
+        sum+=abs(a[i]);
+     }
+     cout<<sum<<endl;
 }
 
 int32_t main()

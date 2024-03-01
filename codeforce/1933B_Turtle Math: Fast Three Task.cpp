@@ -25,7 +25,7 @@ using namespace std;
 #define UB(a,x) upper_bound(all(a),x)-a.begin() //r-next to real index
 #define FIND(a,x) find(all(a),x) //r-index ..init vi:iterator it/auto..check it!=a.end()
 /*-------------------------------------------*/
-#define REDUCE(a) sort(all(a);a.erase(unique(all(a)),a.end()))
+#define REDUCE(a) sort(all(a));a.erase(unique(all(a)),a.end())
 #define FREQ(a,m) for(auto i=0;i<sz(a);i++) m[a[i]]++ //m like ..map<char,int>m
 #define mPrint(m) for(auto itr=m.begin();itr!=m.end();itr++)cout<<itr->first<<" "<<itr->second<<endl
 #define MIN(a) *min_element(all(a))
@@ -39,20 +39,42 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
+
 void solve()
 {
     int n;
-    cin>>n;
-    int pos = 1;
-    for(int i=1;i<=n;i++){
-        int x = pow(2,i);
-        if(x>n){
-            break;
-        }else{
-            pos = x;
+    cin >> n;
+    vi a(n);
+    vi b1;
+    FOR(i, n) {
+        cin >> a[i];
+        if (a[i] % 3 != 0) {
+            b1.pb(a[i]);
         }
     }
-    cout<<pos<<endl;
+    if (SUM(a) % 3 == 0) {
+        cout << 0 << endl;
+        return;
+    }
+    sort(all(b1));
+    vi b2;
+    b2.pb(b1[0]);
+    for(int i=1;i<sz(b1);i++){
+        b2.pb(b2[sz(b2)-1]+b1[i]);
+    }
+
+    for(int i=0;i<sz(b1);i++){
+        if((b2[sz(b2)-1]+1)%3==0){
+            cout<<1<<endl;
+            return;
+        }
+        if((b2[sz(b2)-1]-b1[i])%3==0){
+            cout<<1<<endl;
+            return;
+        }
+    }
+    cout<<2<<endl;
+
 }
 
 int32_t main()
@@ -64,15 +86,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    int t = 1,i=1;
+    int t = 1, i = 1;
     cin >> t;
-    while (t--){
+    while (t--) {
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
+        cerr << "Case # " << i << " RT :" << e - s << endl;
         i++;
     }
-    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
+    cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
     return 0;
 }

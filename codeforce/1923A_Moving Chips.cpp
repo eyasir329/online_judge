@@ -39,20 +39,37 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
+
 void solve()
 {
     int n;
     cin>>n;
-    int pos = 1;
-    for(int i=1;i<=n;i++){
-        int x = pow(2,i);
-        if(x>n){
+    vi a(n);
+    FOR(i,n){
+        cin>>a[i];
+    }
+
+    int x=0,y=0;
+    for(int i=0;i<n;i++){
+        if(a[i]==1){
+            x=i;
             break;
-        }else{
-            pos = x;
+        }    
+    }
+    for(int j=n-1;j>=0;j--){
+        if(a[j]==1){
+            y=j;
+            break;
         }
     }
-    cout<<pos<<endl;
+
+    int z=0;
+    for(int i=x;i<=y;i++){
+        if(a[i]==0){
+            z++;
+        }
+    }
+    cout<<z<<endl;
 }
 
 int32_t main()

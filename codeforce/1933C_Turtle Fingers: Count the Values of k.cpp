@@ -39,20 +39,23 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
+
 void solve()
 {
-    int n;
-    cin>>n;
-    int pos = 1;
-    for(int i=1;i<=n;i++){
-        int x = pow(2,i);
-        if(x>n){
-            break;
-        }else{
-            pos = x;
+    int a, b, l;
+    cin >> a >> b >> l;
+    set<int>s;
+    for (int j = 0; j <= 30; j++) {
+        for (int k = 0; k <= 30; k++) {
+            int ab = pow(a, j) * pow(b, k);
+            if (l % ab) {
+                continue;
+            } else {
+                s.insert(l / ab);
+            }
         }
     }
-    cout<<pos<<endl;
+    cout << sz(s) << endl;
 }
 
 int32_t main()
@@ -64,15 +67,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    int t = 1,i=1;
+    int t = 1, i = 1;
     cin >> t;
-    while (t--){
+    while (t--) {
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
+        cerr << "Case # " << i << " RT :" << e - s << endl;
         i++;
     }
-    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
+    cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
     return 0;
 }

@@ -1,112 +1,57 @@
+// C++ program for the above approach
 #include <bits/stdc++.h>
-
 using namespace std;
-#define int long long int
-#define pb push_back
-#define pp pop_back
-#define ff first
-#define ss second
-#define vi vector <int>
-#define vii vector <pair<int,int>>
-#define vc vector <char>
-#define all(a) a.begin(),a.end()
-#define sz(a) ((int) a.size())
-#define F0R(i,a,b) for(int i=a; i<(b); i++)
-#define FOR(i,a) for(int i=0; i<(a); i++)
-#define SORT(a) sort(all(a),[](auto &left,auto &right){return left.second<right.second})
-/* --------------------------------------------
----must be initialise in another variable ----*/
-#define is(num) to_string(num);
-#define ci(ch) static_cast<int>(ch)-48; //A-65 0-48 a-97
-#define si(str) stoi(str);
-/*-------------------------------------------*/
-#define BS(a,x) binary_search(all(a),x) //r-1/0
-#define LB(a,x) lower_bound(all(a),x)-a.begin() //r-index ..check condition ind>=0 or ind!=n
-#define UB(a,x) upper_bound(all(a),x)-a.begin() //r-next to real index
-#define FIND(a,x) find(all(a),x) //r-index ..init vi:iterator it/auto..check it!=a.end()
-/*-------------------------------------------*/
-#define REDUCE(a) sort(all(a));a.erase(unique(all(a)),a.end())
-#define FREQ(a,m) for(auto i=0;i<sz(a);i++) m[a[i]]++ //m like ..map<char,int>m
-#define mPrint(m) for(auto itr=m.begin();itr!=m.end();itr++)cout<<itr->first<<" "<<itr->second<<endl
-#define MIN(a) *min_element(all(a))
-#define MAX(a) *max_element(all(a))
-#define SUM(a)  accumulate(all(a), 0LL)
-#define SRT(a)  is_sorted(all(a)) //range1,range2
-#define IN(a,pos,num) a.insert(pos,num)
-#define DE(a,pos) a.erase(a.begin()+pos)
-#define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
-#define endl '\n'
-#define yes cout<<"YES"<<endl
-#define no cout<<"NO"<<endl
 
+vector<vector<int> > mat;
+vector<int> s;
+vector<int> d;
+int m = 2, n = 3;
 
-void solve()
+// Function to print all the paths
+void printVector(vector<int> path)
 {
-    int n;
-    cin >> n;
-    vi a(n + 1);
-    vector<int>s1;
-    vector<int>s2;
-    F0R(i, 1, n + 1) cin >> a[i];
-
-    vi b;
-    b.insert(b.end(),all(a));
-    int l = n + 1;
-    while (l--) {
-        int m = MAX(b);
-        for (int i = 1; i < n + 1; i++) {
-            if (a[i] == m) {
-                s1.pb(m + i);
-                b[i]=-1;
-                break;
-            }
-        }
-    }
-
-    int k = n + 1;
-    while (k--) {
-        int m = MAX(a);
-        for (int i = 1; i < n + 1; i++) {
-            if (a[i] == m) {
-                s2.pb(m + i);
-                DE(a, i);
-                break;
-            }
-        }
-    }
-    vi s;
-    s.pb(max(s1[0],s2[0]));
-    for(int i=1;i<n;i++){
-        if(s1[i]>s2[i] and s1[i]!=s1[i-1]){
-            s.pb(s1[i]);
-        }else{
-            s.pb(s2[i]);
-        }
-    }
-
-    REDUCE(s);
-    reverse(all(s));
-    print(s);
+    int cnt = path.size();
+    for (int i = 0; i < cnt; i += 2)
+        cout << mat[path[i]][path[i + 1]]
+             << " ";
+    cout << endl;
 }
 
-int32_t main()
+// Function to find all the paths recursively
+void countPaths(int i, int j, vector<int> path)
 {
 
+    // Base Case
+    if (i > d[0] || j > d[1])
+        return;
+    path.push_back(i);
+    path.push_back(j);
+
+    // Destination is reached
+    if (i == d[0] && j == d[1]) {
+        printVector(path);
+        return;
+    }
+
+    // Calling the function
+    countPaths(i, j + 1, path);
+    countPaths(i + 1, j, path);
+}
+
+// DriverCode
+int main()
+{
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    mat = { { 1, 2, 3 },
+        { 4, 5, 6 }
+    };
+    s = { 0, 0 };
+    d = { 1, 2 };
+    vector<int> path;
 
-    clock_t z = clock();
-    int t = 1, i = 1;
-    cin >> t;
-    while (t--) {
-        auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        solve();
-        auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr << "Case # " << i << " RT :" << e - s << endl;
-        i++;
-    }
-    cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
+    countPaths(s[0], s[1], path);
     return 0;
 }

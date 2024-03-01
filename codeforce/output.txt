@@ -1,3 +1,1 @@
-3 2 
-1000000005 1000004 1003 102 2 
-11 7 6 
+Minmum coins needed are 1Minmum coins needed are 2Minmum coins needed are 1Minmum coins needed are 3Minmum coins needed are 2Minmum coins needed are 2Minmum coins needed are 2Minmum coins needed are 3Minmum coins needed are 2Minmum coins needed are 3Minmum coins needed are 2Minmum coins needed are 2
