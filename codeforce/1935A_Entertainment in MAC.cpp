@@ -39,17 +39,20 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
-
 void solve()
 {
-    int a,b,c;
-    cin>>a>>b>>c;
-    if(a<b and b<c){
-        cout<<"STAIR"<<endl;
-    }else if(a<b and b>c){
-        cout<<"PEAK"<<endl;
+    int n;
+    cin >> n;
+    string s, s1;
+    cin >> s;
+    reverse(all(s));
+    s1 += s;
+    reverse(all(s));
+    s1 += s;
+    if(s1>=s){
+        cout<<s<<endl;
     }else{
-        cout<<"NONE"<<endl;
+        cout<<s1<<endl;
     }
 }
 
@@ -62,15 +65,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    int t = 1,i=1;
+    int t = 1, i = 1;
     cin >> t;
-    while (t--){
+    while (t--) {
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
+        cerr << "Case # " << i << " RT :" << e - s << endl;
         i++;
     }
-    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
+    cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
     return 0;
 }

@@ -39,17 +39,14 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
-
 void solve()
 {
-    int a,b,c;
-    cin>>a>>b>>c;
-    if(a<b and b<c){
-        cout<<"STAIR"<<endl;
-    }else if(a<b and b>c){
-        cout<<"PEAK"<<endl;
+    int n,k;
+    cin>>n>>k;
+    if(k>=(n-1)){
+        cout<<1<<endl;
     }else{
-        cout<<"NONE"<<endl;
+        cout<<n<<endl;
     }
 }
 

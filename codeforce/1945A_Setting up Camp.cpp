@@ -39,18 +39,53 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
-
 void solve()
 {
-    int a,b,c;
-    cin>>a>>b>>c;
-    if(a<b and b<c){
-        cout<<"STAIR"<<endl;
-    }else if(a<b and b>c){
-        cout<<"PEAK"<<endl;
-    }else{
-        cout<<"NONE"<<endl;
+    int a, b, c;
+    cin >> a >> b >> c;
+    int ans = 0;
+    ans += a;
+    bool flag = false;
+    
+    if(b<3){
+        int x = 3-b;
+        if(c>=x){
+            b+=x;
+            c-=x;
+        }else{
+            if(b!=0) flag = true;
+        }
     }
+    if(b>3){
+        int x = 3-b%3;
+        if(c>=x){
+            b+=x;
+            c-=x;
+        }else{
+            if(b%3!=0) flag = true;
+        }
+    }
+
+    ans +=b/3;
+
+    if (c < 3 and c!=0) {
+        ans += 1;
+    } else {
+        ans += (c / 3);
+        if (c % 3 != 0) {
+            ans += 1;
+        }
+    }
+
+    // cout << a << " " << b << " " << c << endl;
+
+    if (flag) {
+        cout << -1 << endl;
+    } else {
+        cout << ans << endl;
+    }
+
+
 }
 
 int32_t main()
@@ -62,15 +97,15 @@ int32_t main()
 #endif
 
     clock_t z = clock();
-    int t = 1,i=1;
+    int t = 1, i = 1;
     cin >> t;
-    while (t--){
+    while (t--) {
         auto s = ((double)(clock() - z) / CLOCKS_PER_SEC);
         solve();
         auto e = ((double)(clock() - z) / CLOCKS_PER_SEC);
-        cerr<<"Case # "<<i<<" RT :"<<e-s<<endl;
+        cerr << "Case # " << i << " RT :" << e - s << endl;
         i++;
     }
-    cerr<<"TRT :"<<((double)(clock() - z) / CLOCKS_PER_SEC)<<endl;
+    cerr << "TRT :" << ((double)(clock() - z) / CLOCKS_PER_SEC) << endl;
     return 0;
 }
