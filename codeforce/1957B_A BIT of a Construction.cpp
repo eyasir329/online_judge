@@ -15,39 +15,37 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    int n,k; cin>>n>>k;
+    int n, k; cin >> n >> k;
     int kk = k;
     vector<int> v;
-    for(int i=32;i>0;i--){
-        int x = pow(2,i);
-        x-=1;
-        int y = k-(n-1);
-        if(y>x){
+    for (int i = 32; i > 0; i--) {
+        int x = pow(2, i);
+        x -= 1;
+        int y = k;
+        if (y > x) {
             v.push_back(x);
-            k-=x;
+            k -= x;
         }
     }
-    k=kk;
+    k = kk;
     // print(v);
-    if(n==1){
-        cout<<k<<endl;
-    }else{
-        if(n>sz(v)){
-            int s=k;
-            for(int i=0;i<sz(v);i++){
-                cout<<v[i]<<" ";
-                n--;
-                s-=v[i];
+    if (n == 1) {
+        cout << k << endl;
+    } else {
+        if (sz(v)>=1 and k > v[0]) {
+            cout << v[0] << " ";
+            cout << abs(v[0] - k) << " ";
+            for (int i = 2; i < n; i++) {
+                cout << 0 << " ";
             }
-            while(n--){
-                cout<<s<<" ";
+        } else {
+            cout << k << " ";
+            for (int i = 1; i < n; i++) {
+                cout << 0 << " ";
             }
-            cout<<endl;
-        }else{
-            print(v);
         }
+        cout << endl;
     }
-
 }
 
 int32_t main() {
