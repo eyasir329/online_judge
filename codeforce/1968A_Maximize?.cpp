@@ -15,19 +15,21 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    int n; cin>>n;
-    std::vector<int> a(n-1);
-    std::vector<int> vv(n);
-    for(auto &x:a) cin>>x;
-    vv[n-1] = 1e6;
-    for(int i=0;i<n-1;i++){
-        vv[i]=vv[n-i]/a[i];
+    int x; cin >> x;
+    int ans = 0;
+    int y;
+    std::vector<pair<int, int>> v;
+    for (int i = 1; i < x; i++) {
+        y = i;
+        ans = max(ans, {gcd(x, y) + y});
+        v.pb({y, ans});
+    }    
+    for (auto x : v) {
+        if (x.ss == ans) {
+            cout << x.ff << endl;
+            return;
+        }
     }
-    print(vv);
-    for(int i=1;i<n;i++){
-        cout<<a[i]%a[i-1]<<" ";
-    }
-    cout<<endl;
 }
 
 int32_t main() {
