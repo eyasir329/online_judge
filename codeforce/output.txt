@@ -1,10 +1,4 @@
-Bodya
-Sasha
-Draw
-Draw
-Bodya
-Sasha
-Sasha
-Sasha
-Sasha
-Bodya
+Case #1: 4
+Case #2: 3
+Case #3: 2
+Case #4: 1

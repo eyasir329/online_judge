@@ -15,17 +15,15 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    int n; cin>>n;
+    int n; cin >> n;
     std::vector<int> v(n);
-    for(auto &x:v) cin>>x;
-    for(int i=0;i<n-2;i++){
-        if(v[i]+v[i+1]+v[i+2]==0){
-            cout<<v[i]<<v[i+1]<<v[i+2];
-            yes;
-            return;
-        }
+    for (auto &x : v) cin >> x;
+    int cnt = 0;
+    sort(all(v));
+    for (int i = n - 1; i >= 0; i--) {
+        cnt += i * v[i] - (n - 1 - i) * v[i];
     }
-    no;
+    cout << cnt << endl;
 }
 
 int32_t main() {
