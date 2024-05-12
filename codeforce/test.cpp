@@ -15,17 +15,7 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    int n; cin>>n;
-    std::vector<int> v(n);
-    for(auto &x:v) cin>>x;
-    for(int i=0;i<n-2;i++){
-        if(v[i]+v[i+1]+v[i+2]==0){
-            cout<<v[i]<<v[i+1]<<v[i+2];
-            yes;
-            return;
-        }
-    }
-    no;
+    
 }
 
 int32_t main() {
@@ -38,7 +28,7 @@ int32_t main() {
 #endif
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) solve();
     return 0;
 }
