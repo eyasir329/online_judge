@@ -15,7 +15,21 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n; cin>>n;
+    std::vector<int> a(n);
+    for(auto &i:a) cin>>i;
+    int sum = 0;
+    for(int i=0;i<n;){
+        int cnt = -2e18;
+        int j = i;
+        while(j<n and ((a[i]>0 and a[j]>0) or (a[i]<0 and a[j]<0))){
+            cnt = max(cnt,a[j]);
+            j++;
+        }
+        sum+=cnt;
+        i = j;
+    }
+    cout<<sum<<endl;
 }
 
 int32_t main() {

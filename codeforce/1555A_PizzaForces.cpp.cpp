@@ -15,7 +15,18 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n; cin>>n;
+    int x = 6, y = 8, z = 10;
+    int a = 15, b = 20, c = 25;
+    if(n<=x){
+        cout<<a<<endl;
+    }else if(n<=y){
+        cout<<b<<endl;
+    }else if(n<=z){
+        cout<<c<<endl;
+    }else{
+        cout<<((n+1)/2)*5<<endl;
+    }
 }
 
 int32_t main() {

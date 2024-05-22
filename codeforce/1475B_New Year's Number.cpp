@@ -15,7 +15,19 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n; cin >> n;
+    int x = 2020, y = 2021;
+    int cnt = 0;
+    while(n%x!=0 and n>2020){
+        n-=y;
+        cnt++;
+    }
+
+    if(n%x==0 or (cnt>0 and n==0)){
+        yes;
+    }else{
+        no;
+    }
 }
 
 int32_t main() {

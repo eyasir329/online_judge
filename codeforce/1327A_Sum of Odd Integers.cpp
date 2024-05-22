@@ -14,9 +14,34 @@ using namespace std;
 
 const int MOD = 1e9 + 7;
 
+// void solve() {
+//     int n,k; cin>>n>>k;
+//     int sum = k*k*1LL;
+//     if(n%2==0){
+//         if(k%2==1 or sum>n){
+//             no;
+//         }else{
+//             yes;
+//         }
+//     }else{
+//         if(k%2==0 or sum>n){
+//             no;
+//         }else{
+//             yes;
+//         }
+//     }
+// }
+
 void solve() {
-    
+    int n,k; cin>>n>>k;
+    int sum = k*k*1LL;
+    if(sum>n or (n%2==0 and k%2==1) or (n%2==1 and k%2==0)){
+        no;
+    }else{
+        yes;
+    }
 }
+
 
 int32_t main() {
     ios::sync_with_stdio(false);

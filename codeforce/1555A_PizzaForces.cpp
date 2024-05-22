@@ -16,32 +16,32 @@ const int MOD = 1e9 + 7;
 
 void solve() {
     int n; cin >> n;
-    std::vector<int> v(n);
-    for (auto &i : v) cin >> i;
-
-    vector<map<pair<int,int>,vector<int>>>m(3);
-    for(int i=0;i<n-2;i++){
-        m[0][{v[i],v[i+1]}].pb(v[i+2]);
-        m[1][{v[i],v[i+2]}].pb(v[i+1]);
-        m[2][{v[i+1],v[i+2]}].pb(v[i]);
-    }
-    int ans = 0;
-    for(int i=0;i<3;i++){
-        for( auto &[key,a]:m[i]){
-            map<int,int>mt;
-            for(auto x:a){
-                mt[x]++;
+    int x = 6, y = 8, z = 10;
+    int a = 15, b = 20, c = 25;
+    if (n <= x) {
+        cout << a << endl;
+    } else if (n <= y) {
+        cout << b << endl;
+    } else if (n <= z) {
+        cout << c << endl;
+    } else {
+        int ct = n % 10;
+        int ans = (n / 10) * 25;
+        if (ct > 0) {
+            if (ct >= 1 and ct <= 2) {
+                ans += 5;
+            } else if (ct <= 4) {
+                ans += 10;
+            } else if (ct <= 6) {
+                ans += 15;
+            } else if (ct <= 8) {
+                ans += 20;
+            } else {
+                ans += 25;
             }
-            int ma = a.size();
-            int ct = 0;
-
-            for(auto y:a){
-                ct+=(ma - mt[y]);
-            }
-            ans+=ct/2;
         }
+        cout << ans << endl;
     }
-    cout<<ans<<endl;
 }
 
 int32_t main() {

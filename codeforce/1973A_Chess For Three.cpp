@@ -15,7 +15,16 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int a,b,c; cin>>a>>b>>c;
+    if((a+b+c)%2!=0){
+        cout<<-1<<endl;
+    }else{
+        if(a+b>=c){
+            cout<<(a+b+c)/2<<endl;
+        }else{
+            cout<<a+b<<endl;
+        }
+    }
 }
 
 int32_t main() {

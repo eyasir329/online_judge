@@ -15,7 +15,18 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int h; cin>>h;
+    int i=-1,cnt = 0,th = 0;
+    while(1){
+    	if(th>h){
+    		break;
+    	}else{
+    		i++;
+    		cnt++;
+    		th+=pow(2,i);
+    	}
+    } 
+    cout<<cnt<<endl;
 }
 
 int32_t main() {
@@ -28,7 +39,7 @@ int32_t main() {
 #endif
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) solve();
     return 0;
 }
