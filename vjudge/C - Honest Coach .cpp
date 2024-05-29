@@ -15,7 +15,37 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n; cin>>n;
+    std::vector<int> v(n);
+    for(auto &x:v) cin>>x;
+    sort(all(v));
+    map<int,int>m;
+    int a = 0,b = 0;
+	for(auto x:v) m[x]++;
+    bool flag = true;
+	for(auto x:m){
+		if((int)x.ss%2==0){
+			a = x.ff;
+			b = x.ff;
+            flag=false;
+			break;
+		}
+	}
+    if(flag){
+        int cnt =LLONG_MAX>>1;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                int x = abs(v[i]-v[j]);
+                cnt = min(cnt,x);
+            }
+        }
+        if(cnt == LLONG_MAX>>1){
+            cnt = 0;
+        }
+        cout<<cnt<<endl;
+        return;
+    }
+	cout<<abs(a-b)<<endl;
 }
 
 int32_t main() {

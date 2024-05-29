@@ -15,7 +15,14 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n; cin >> n;
+    std::vector<int> v(n);
+    for (auto &x : v) cin >> x;
+    int cnt = v[0];
+    for (int i = 1; i < n; i++) {
+        cnt&=v[i];
+    }
+    cout<<cnt<<endl;
 }
 
 int32_t main() {

@@ -15,7 +15,16 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    string s; cin>>s;
+    if(s[4]!='s'){
+    	string s1(s.begin(),s.begin()+4);
+    	s1+='s';
+    	string s2(s.begin()+4,s.end());
+    	s1+=s2;
+    	cout<<s1<<endl;
+    }else{
+    	cout<<s<<endl;
+    }
 }
 
 int32_t main() {
@@ -29,6 +38,10 @@ int32_t main() {
 
     int t = 1;
     cin >> t;
-    while (t--) solve();
+    int test = 1;
+    while (t--) {
+    	cout<<"Case "<<test++<<": ";
+    	solve();
+    }
     return 0;
 }

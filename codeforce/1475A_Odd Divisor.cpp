@@ -15,7 +15,20 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n; cin >> n;
+
+    if (n > 2) {
+        if (n&1) {
+            yes;
+            return;
+        }
+        while(n%2==0) n/=2;
+        if(n>1) {
+            yes; 
+            return;
+        }
+    }
+    no;
 }
 
 int32_t main() {

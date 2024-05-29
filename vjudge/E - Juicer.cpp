@@ -15,7 +15,26 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n,b,d; cin>>n>>b>>d;
+    std::vector<int> v(n);
+    for(auto &i:v) cin>>i;
+    vector<int>a;
+	for(int i=0;i<n;i++){
+		if(v[i]<=b){
+			a.pb(v[i]);
+		}
+	}
+	int cnt = 0;
+	int tot = 0;
+	for(int i=0;i<sz(a);i++){
+		if(tot+a[i]<=d){
+			tot+=a[i];
+		}else{
+			tot = 0;
+			cnt++;
+		}
+	}
+	cout<<cnt<<endl;
 }
 
 int32_t main() {
@@ -28,7 +47,7 @@ int32_t main() {
 #endif
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) solve();
     return 0;
 }
