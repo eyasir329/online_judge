@@ -15,44 +15,19 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    int n; cin >> n;
-    string s; cin >> s;
-    string num, alpha;
-    int nu = 0, c = 0;
-    bool flag = true;
-    for (int i = 0; i < n; i++) {
-        if (flag) {
-            if (s[i] >= '0' and s[i] <= '9') {
-                num += s[i];
-                nu++;
-            } else {
-                flag = false;
-                if (s[i] >= 'a' and s[i] <= 'z') {
-                    alpha += s[i];
-                    c++;
-                }
-            }
-        } else {
-            if (s[i] >= 'a' and s[i] <= 'z') {
-                alpha += s[i];
-                c++;
+    int x,y; cin>>x>>y;
+    int cnt =0;
+    while(y!=1){
+        if(y%2==0){
+            y/=2;
+            cnt++;
+        }else{
+            if(y>1){
+                y--;
             }
         }
     }
-    if (nu + c == n) {
-        string a, b;
-        a += num;
-        sort(all(a));
-        b += alpha;
-        sort(all(b));
-        if (num == a and alpha == b) {
-            yes;
-        } else {
-            no;
-        }
-    } else {
-        no;
-    }
+    cout<<cnt<<endl;
 }
 
 int32_t main() {

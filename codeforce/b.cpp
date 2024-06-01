@@ -14,34 +14,25 @@ using namespace std;
 
 const int MOD = 1e9 + 7;
 
+vector<int> generateSequence(int n) {
+    vector<int> dp(n);
+    if (n > 0) dp[0] = 0;
+    if (n > 1) dp[1] = 1;
+
+    for (int i = 2; i < n; ++i) {
+        if (i % 2 == 0) {
+            dp[i] = dp[i - 1] ^ dp[i / 2];
+        } else {
+            dp[i] = dp[i - 1] + dp[(i - 1) / 2];
+        }
+    }
+    return dp;
+}
+
 void solve() {
-    int n; cin >> n;
-    std::vector<int> a(n);
-    std::vector<int> b(n + 1);
-    for (auto &x : a) cin >> x;
-    for (auto &x : b) cin >> x;
-    int cnt = 0,xx=LLONG_MAX;
-    bool flag = false;
-    for (int i = 0; i < n; i++) {
-        cnt += (abs(a[i] - b[i]));
-        if(a[i]>=b[i] and (b.back()>=b[i] and b.back()<=a[i])){
-            flag = true;
-        }
-        if(a[i]<=b[i] and (b.back()<=b[i] and b.back()>=a[i])){
-            flag = true;
-        }
-    }
-    if(flag){
-        cnt++;
-    }else{
-        cnt++;
-        for(int i=0;i<n;i++){
-            xx = min(xx,abs(b[i]-b.back()));
-            xx = min(xx,abs(a[i]-b.back()));
-        }
-        cnt+=xx;
-    }
-    cout << cnt << endl;
+    // int n,m; cin>>n>>m;
+    vector<int> sequence = generateSequence(100);
+    print(sequence);
 }
 
 int32_t main() {
