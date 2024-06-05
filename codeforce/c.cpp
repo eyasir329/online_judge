@@ -16,32 +16,40 @@ const int MOD = 1e9 + 7;
 
 void solve() {
     int n; cin >> n;
-    std::vector<int> v(n);
-    for (auto &i : v) cin >> i;
-
-    vector<map<pair<int,int>,vector<int>>>m(3);
-    for(int i=0;i<n-2;i++){
-        m[0][{v[i],v[i+1]}].pb(v[i+2]);
-        m[1][{v[i],v[i+2]}].pb(v[i+1]);
-        m[2][{v[i+1],v[i+2]}].pb(v[i]);
-    }
-    int ans = 0;
-    for(int i=0;i<3;i++){
-        for( auto &[key,a]:m[i]){
-            map<int,int>mt;
-            for(auto x:a){
-                mt[x]++;
+    std::vector<int> a(n), b(n);
+    for (auto &x : a) cin >> x;
+    for (auto &x : b) cin >> x;
+    int m; cin >> m;
+    std::vector<int> d(m);
+    for (auto &x : d) cin >> x;
+    std::vector<int> v;
+    int xx = 0;
+    for (int i = 0; i < n; i++) {
+        if (a[i] != b[i]) {
+            bool fl = true;
+            for (int j = i; j < sz(d); j++) {
+                if (b[i] == d[j]) {
+                    a[i] = d[j];
+                    d.erase(d.begin() + j);
+                    break;
+                }
+                if (xx < m and j + 1 == sz(d)) {
+                    j = 0;
+                    fl = false;
+                }
+                if(!fl and j==i){
+                    break;
+                }
             }
-            int ma = a.size();
-            int ct = 0;
-
-            for(auto y:a){
-                ct+=(ma - mt[y]);
-            }
-            ans+=ct/2;
         }
     }
-    cout<<ans<<endl;
+    for (int i = 0; i < n; i++) {
+        if (a[i] != b[i]) {
+            no;
+            return;
+        }
+    }
+    yes;
 }
 
 int32_t main() {

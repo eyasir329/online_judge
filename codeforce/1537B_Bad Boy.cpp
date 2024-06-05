@@ -1,21 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long int
-#define all(a) a.begin(),a.end()
-#define sz(a) ((int) a.size())
-#define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
-#define pb push_back
-#define pp pop_back
-#define ff first
-#define ss second
-#define endl '\n'
-#define yes cout<<"YES"<<endl
-#define no cout<<"NO"<<endl
-
-const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n,m,x,y; cin>>n>>m>>x>>y;
+    cout<<1<<" "<<1<<" "<<n<<" "<<m<<endl;
 }
 
 int32_t main() {
