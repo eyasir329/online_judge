@@ -15,36 +15,13 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    string s; cin>>s;
-    int cnt = 0;
-    int one = 0;
-    for(int i=0;i<4;i++){
-    	if(s[i]=='1'){
-    		one++;
-    	}
-    }
-   	if(one == 1){
-   		cout<<11<<endl;
-   	}else if(one == 2){
-   		if(s[0]=='1' and s[1]=='1'){
-   			cout<<21<<endl;
-   		}else if(s[2]=='1' and s[3]=='1'){
-   			cout<<21<<endl;
-   		}else{
-   			cout<<11*11<<endl;
-   		}
-   	}else if(one == 3){
-   		cout<<21*11<<endl;
-   	}else if(one == 4){
-   		cout<<441<<endl;
-   	}else{
-   		cout<<0<<endl;
-   	}
+    
 }
 
 int32_t main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
+    cout.tie(NULL);
 
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
