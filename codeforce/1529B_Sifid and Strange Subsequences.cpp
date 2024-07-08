@@ -1,30 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// __builtin_popcount(n)
-int numofOne(uint32_t n){
-    int count = 0;
-    while(n){
-        count += n&1;
-        n>>=1;
-    }
-    return count;
-}
-
 void solve() {
     int n; cin>>n;
-    n--;
-    while(true){
-        cout<<n<<" ";
-        if(numofOne(n)==1){
+    std::vector<int> v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    sort(v.begin(),v.end());
+    int maxn = v[0],minx = INT_MAX;
+    int cnt = 1;
+    for(int i=1;i<n;i++){
+        cnt++;
+        maxn = max(maxn,v[i]);
+        minx = min(minx,abs(v[i]-v[i-1]));
+        if(v[i]>0){
             break;
         }
-        n--;
     }
-    for(int i=0;i<n;i++){
-        cout<<i<<" ";
-    }
-    cout<<endl;
+    if(minx<maxn) cnt--;
+    cout<<cnt<<endl;
 }
 
 int main() {

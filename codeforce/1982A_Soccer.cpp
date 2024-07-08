@@ -15,7 +15,19 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int x1,y1,x2,y2; cin>>x1>>y1>>x2>>y2;
+    bool fl = false;
+    if(x1<=x2 and ((y1>=x1 and y1<=x2) and (y2>=x1 and y2<=x2))){
+        fl = true;
+    }
+    if(y1<=y2 and ((x2>=y1 and x2<=y2) and (x1>=y1 and x1<=y2))){
+        fl = true;
+    }
+    if(fl){
+        no;
+    }else{
+        yes;
+    }
 }
 
 int32_t main() {

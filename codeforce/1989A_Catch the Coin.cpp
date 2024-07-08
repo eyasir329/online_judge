@@ -15,7 +15,25 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int x, y; cin >> x >> y;
+    bool fl = false;
+    if (x == 0 and y == 0) {
+        fl = true;
+    }
+    if(y>0){
+        y-=(abs(x));
+    }else{
+        y-=(abs(x)-1);
+    }
+    x = -abs(x);
+    if (y>=x) {
+        fl = true;
+    }
+    if (fl) {
+        yes;
+    } else {
+        no;
+    }
 }
 
 int32_t main() {

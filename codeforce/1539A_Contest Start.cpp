@@ -1,21 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long int
-#define all(a) a.begin(),a.end()
-#define sz(a) ((int) a.size())
-#define print(a) for(auto x:a) cout<<x<<" ";cout<<endl
-#define pb push_back
-#define pp pop_back
-#define ff first
-#define ss second
-#define endl '\n'
-#define yes cout<<"YES"<<endl
-#define no cout<<"NO"<<endl
-
-const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n, x, t; cin >> n >> x >> t;
+    int cnt = 0;
+    int multi = t / x;
+    int k = (n - multi);
+    if (k >= 0) {
+        cnt += k * (multi);
+        int m = (n - k - 1);
+        int s = (m * (m + 1)) / 2;
+        cnt += s;
+    }else{
+        int m = (n - 1);
+        int s = (m * (m + 1)) / 2;
+        cnt+=s;
+    }
+
+    cout << cnt << endl;
 }
 
 int32_t main() {

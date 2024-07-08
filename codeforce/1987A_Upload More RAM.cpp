@@ -15,7 +15,13 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    
+    int n,k; cin>>n>>k;
+    int ans = 0;
+    while(n--){
+        ans+=k;
+    }
+    ans-=(k-1);
+    cout<<ans<<endl;
 }
 
 int32_t main() {

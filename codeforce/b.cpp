@@ -15,28 +15,7 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 void solve() {
-    int n, a, b; cin >> n >> a >> b;
-    int k = min(n, b);
-    if (b < a) {
-        cout << n*a * 1ll << endl;
-    } else {
-        int x = b - a;
-        int ans2 = 0;
-        if (k >= x) {
-            // for (int i = 1; i <= x; i++) {
-            //     ans2 += (b - i + 1);
-            // }
-            ans2+=(x*b-((x*(x+1))/2)+x);
-            ans2+=(n-x)*a;
-        } else {
-            // for (int i = 1; i <= k; i++) {
-            //     ans2 += (b - i + 1);
-            // }
-            ans2+=(k*b-((k*(k+1))/2)+k);
-            ans2+=(n-k)*a;
-        }
-        cout<<ans2<<endl;
-    }
+    
 }
 
 int32_t main() {

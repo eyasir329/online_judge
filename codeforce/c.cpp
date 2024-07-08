@@ -9,41 +9,13 @@ using namespace std;
 #define ff first
 #define ss second
 #define endl '\n'
-#define yes cout<<"Yes"<<endl
-#define no cout<<"No"<<endl
+#define yes cout<<"YES"<<endl
+#define no cout<<"NO"<<endl
 
 const int MOD = 1e9 + 7;
 
 void solve() {
-    int n, k; cin >> n >> k;
-    std::vector<int> v(n+1);
-    for (int i = 1; i <= n; i++) {
-        v[i] = i;
-    }
-    if (k%2) {
-        no;
-    } else {
-        for(int i=1,j=n;i<j;){
-            int x = abs(v[i]-v[j]);
-            if(x*2<=k){
-                k-=x*2;
-                swap(v[i],v[j]);
-                i++;
-                j--;
-            }else{
-                j--;
-            }
-        }
-        if(k!=0){
-            no;
-        }else{
-            yes;
-            for(int i=1;i<=n;i++){
-                cout<<v[i]<<" ";
-            }
-            cout<<endl;
-        }
-    }
+    
 }
 
 int32_t main() {

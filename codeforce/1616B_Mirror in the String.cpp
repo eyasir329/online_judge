@@ -1,30 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// __builtin_popcount(n)
-int numofOne(uint32_t n){
-    int count = 0;
-    while(n){
-        count += n&1;
-        n>>=1;
-    }
-    return count;
-}
-
 void solve() {
     int n; cin>>n;
-    n--;
-    while(true){
-        cout<<n<<" ";
-        if(numofOne(n)==1){
+    string s,k,k1; cin>>s;
+    k+=(s[0]);
+    for(int i=1;i<n;i++){
+        if(s[i]<=k.back()){
+            k+=s[i];
+        }else{
             break;
         }
-        n--;
     }
-    for(int i=0;i<n;i++){
-        cout<<i<<" ";
+    k1 = k;
+    reverse(k1.begin(),k1.end());
+    k+=k1;
+    if(k[0]==k[1]){
+        cout<<k[0]<<k[0]<<endl;
+        return;
     }
-    cout<<endl;
+    cout<<k<<endl;
 }
 
 int main() {
